@@ -1,5 +1,6 @@
 package numbers;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class CheckingMultipleNumbers {
@@ -13,7 +14,7 @@ public class CheckingMultipleNumbers {
         if (odd) {
             stringOdd = "odd";
         }
-    return stringOdd;
+        return stringOdd;
     }
 
 
@@ -85,7 +86,7 @@ public class CheckingMultipleNumbers {
         long isGapful = -1;
 
         if (stringNumber.length() > 2) {
-            String dividedBy = parts[0] + parts[parts.length -1];
+            String dividedBy = parts[0] + parts[parts.length - 1];
             long dividedByNumber = Long.parseLong(dividedBy);
             isGapful = number % dividedByNumber;
         }
@@ -98,43 +99,67 @@ public class CheckingMultipleNumbers {
         return stringGapful;
     }
 
-    static void properties2 (String[] inputArray) {
+    static String isSpy(long number) {
+        boolean spy = false;
+        String stringSpy = "";
+        long sum;
+        long product = 1;
+        String stringNumber = Long.toString(number);
+        String[] parts = stringNumber.split("");
+        long[] digits = new long[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            digits[i] = Long.parseLong(parts[i]);
+        }
+        sum = Arrays.stream(digits).sum();
+
+        for (int i = 0; i < digits.length; i++) {
+            product = product * digits[i];
+        }
+
+        if (sum == product){
+            spy = true;
+        }
+        if (spy) {
+            stringSpy = "spy";
+        }
+        return stringSpy;
+    }
+
+    static void properties2(String[] inputArray) {
         long startNumber = Long.parseLong(inputArray[0]);
         long repeat = Long.parseLong(inputArray[1]);
-//        String result = "";
+
         /** Próba na upgrade StringJoinera, to zamiast użyć .add i fuckji if,
          * to użyć .merge. To powinno pozwolić na usunięcie if'a, bo to działa tylko
          * na nie nulle
          */
 
-        for (long i = startNumber; i <= repeat; i++ ){
+        for (long i = 1; i <= repeat; i++) {
             StringJoiner result = new StringJoiner(", ");
-            if (isEven(i).length() > 2) {result.add(isEven(i));}
-            if (isOdd(i).length() > 2) {result.add(isOdd(i));}
-            if (isBuzz(i).length() > 2) {result.add(isBuzz(i));}
-            if (isDuck(i).length() > 2) {result.add(isDuck(i));}
-            if (isPalindromic(i).length() > 2) {result.add(isPalindromic(i));}
-            if (isGapful(i).length() > 2) {result.add(isGapful(i));}
+            if (isEven(startNumber).length() > 2) {
+                result.add(isEven(startNumber));
+            }
+            if (isOdd(startNumber).length() > 2) {
+                result.add(isOdd(startNumber));
+            }
+            if (isBuzz(startNumber).length() > 2) {
+                result.add(isBuzz(startNumber));
+            }
+            if (isDuck(startNumber).length() > 2) {
+                result.add(isDuck(startNumber));
+            }
+            if (isPalindromic(startNumber).length() > 2) {
+                result.add(isPalindromic(startNumber));
+            }
+            if (isGapful(startNumber).length() > 2) {
+                result.add(isGapful(startNumber));
+            }
+            if (isSpy(startNumber).length() > 2) {
+                result.add(isSpy(startNumber));
+            }
 
-//            result.add(isEven(i));
-//            result.add(isOdd(i));
-//            result.add(isBuzz(i));
-//            result.add(isDuck(i));
-//            result.add(isPalindromic(i));
-//            result.add(isGapful(i));
-
-            System.out.println(i + " is " + result);
-
-
-//            result = isOdd(i).concat(", ")
-//                    .concat(isBuzz(i)).concat(" ,")
-//                    .concat(isDuck(i)).concat(" ,")
-//                    .concat(isEven(i)).concat(" ,")
-//                    .concat(isPalindromic(i)).concat(" ,")
-//                    .concat(isGapful(i));
-//            System.out.println(i + " is " + result);
+            System.out.println(startNumber + " is " + result);
+            startNumber++;
         }
-
-
     }
 }

@@ -1,23 +1,15 @@
 package numbers;
 
-import javax.swing.*;
+import java.util.Arrays;
 
 public class CheckingNumber {
 
     static boolean isOdd(long number) {
-        boolean odd = false;
-        if (number % 2 != 0) {
-            odd = true;
-        }
-        return odd;
+        return number % 2 != 0;
     }
 
     static boolean isEven(long number) {
-        boolean even = false;
-        if (number % 2 == 0) {
-            even = true;
-        }
-        return even;
+        return number % 2 == 0;
     }
 
     static boolean isBuzz(long number) {
@@ -34,11 +26,7 @@ public class CheckingNumber {
     }
 
     static boolean isDuck(long number) {
-        boolean duck = false;
-        if (String.valueOf(number).contains("0")) {
-            duck = true;
-        }
-        return duck;
+        return String.valueOf(number).contains("0");
     }
 
     static boolean isPalindromic(long number) {
@@ -61,7 +49,7 @@ public class CheckingNumber {
         long isGapful = -1;
 
         if (stringNumber.length() > 2) {
-            String dividedBy = parts[0] + parts[parts.length -1];
+            String dividedBy = parts[0] + parts[parts.length - 1];
             long dividedByNumber = Long.parseLong(dividedBy);
             isGapful = number % dividedByNumber;
         }
@@ -71,17 +59,38 @@ public class CheckingNumber {
         return gapful;
     }
 
+    static boolean isSpy(long number) {
+        boolean spy = false;
+        long sum;
+        long product = 1;
+        String stringNumber = Long.toString(number);
+        String[] parts = stringNumber.split("");
+        long[] digits = new long[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            digits[i] = Long.parseLong(parts[i]);
+        }
+        sum = Arrays.stream(digits).sum();
+
+        for (int i = 0; i < digits.length; i++) {
+            product = product * digits[i];
+        }
+
+        if (sum == product){
+            spy = true;
+        }
+        return spy;
+    }
+
     static void properties(long number) {
         System.out.println("Properties of " + number + "\n" +
-                "        even: " + isEven(number)+ "\n" +
+                "        even: " + isEven(number) + "\n" +
                 "         odd: " + isOdd(number) + "\n" +
                 "        buzz: " + isBuzz(number) + "\n" +
                 "        duck: " + isDuck(number) + "\n" +
                 "        gapful: " + isGapful(number) + "\n" +
-                " palindromic: " + isPalindromic(number));
+                " palindromic: " + isPalindromic(number) + "\n" +
+                "           spy: " + isSpy(number));
     }
-
-
 
 
 }

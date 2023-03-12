@@ -2,3 +2,10 @@ content:
 - Processing strings
 - Iterating over arrays
 - Primitive and reference types
+- Overloading
+- Getters and setters
+- Multiple constructors
+- The keyword super
+- Hierarchy of exceptions
+- StringBuilder
+- Debugging techniques

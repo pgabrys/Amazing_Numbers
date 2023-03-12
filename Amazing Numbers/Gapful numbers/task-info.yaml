@@ -711,29 +711,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13201#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #19
-
-    Expected 2 non blank lines but actual output contains 1 lines.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Welcome to Amazing Numbers!
-
-    Supported requests:
-    - enter a natural number to know its properties;
-    - enter two natural numbers to obtain the properties of the list:
-      * the first parameter represents a starting number;
-      * the second parameter shows how many consecutive numbers are to be processed;
-    - separate the parameters with one space;
-    - enter 0 to exit.
-    Enter a request:
-    &gt; 3438363336798710107 1
-    Enter a request:
-  time: "Tue, 31 Jan 2023 18:18:41 UTC"
-record: -1
+  message: Congratulations!
+  time: "Sat, 04 Feb 2023 13:07:02 UTC"
+record: 4
