@@ -23,17 +23,19 @@ public class Main {
             String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
             long number = Long.parseLong(inputArray[0]);
+            String property;
 
             boolean natural = true;
 
-            CheckingRequest.exit(exit, number);
+            //CheckingRequest.exit(exit, number);
+            //CheckingRequest.isNatural(inputArray,natural,number);
 
-//            if (number == 0) {
-//                exit = true;
-//                System.out.println("Goodbye!");
-//            }
+            if (number == 0) {
+                exit = true;
+                System.out.println("Goodbye!");
+            }
 
-            if (inputArray.length == 2) {
+            if (inputArray.length == 2 || inputArray.length == 3) {
                 if (Long.parseLong(inputArray[1]) < 1) {
                     natural = false;
                     System.out.println("The second parameter should be a natural number.");
@@ -50,6 +52,9 @@ public class Main {
             }
             if (natural && inputArray.length == 2) {
                 CheckingMultipleNumbers.properties2(inputArray);
+            }
+            if (natural && inputArray.length == 3){
+
             }
 
         } while (!exit);
