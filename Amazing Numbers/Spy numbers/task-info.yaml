@@ -935,21 +935,47 @@ files:
 - name: src/numbers/CheckingNumberWithProperty.java
   visible: true
   learner_created: true
+- name: src/numbers/Number.java
+  visible: true
+  learner_created: true
+- name: src/numbers/Property.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13202#comment
 status: Failed
 feedback:
-  message: "Exception in test #2\n\njava.lang.NumberFormatException: For input string:\
-    \ &quot;-&quot;\n\tat java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)\n\
-    \tat java.base/java.lang.Long.parseLong(Long.java:701)\n\tat java.base/java.lang.Long.parseLong(Long.java:836)\n\
-    \tat numbers.CheckingNumber.isSpy(CheckingNumber.java:70)\n\tat numbers.CheckingNumber.properties(CheckingNumber.java:92)\n\
-    \tat numbers.Main.main(Main.java:57)\n\nPlease find below the output of your program\
-    \ during this failed test.\nNote that the &#39;&gt;&#39; character indicates the\
-    \ beginning of the input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported\
-    \ requests:\n - enter a natural number to know its properties;\n - enter two natural\
-    \ numbers to obtain the properties of the list:\n    * the first parameter represents\
-    \ a starting number;\n    * the second parameters show how many consecutive numbers\
-    \ are to be processed;\n - two natural numbers and a property to search for;\n\
-    \ - separate the parameters with one space;\n - enter 0 to exit.\nEnter a request:\n\
-    &gt; -102"
-  time: "Sat, 18 Mar 2023 17:23:58 UTC"
+  message: |-
+    Wrong answer in test #29
+
+    The request: &quot;1 10 May&quot; has one wrong property. Expected message: &quot;The property ... is wrong&quot;.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Welcome to Amazing Numbers!
+
+    Supported requests:
+     - enter a natural number to know its properties;
+     - enter two natural numbers to obtain the properties of the list:
+        * the first parameter represents a starting number;
+        * the second parameters show how many consecutive numbers are to be processed;
+     - two natural numbers and a property to search for;
+     - separate the parameters with one space;
+     - enter 0 to exit.
+    Enter a request:
+    &gt; 1 10 May
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    0 is even, buzz, duck, palindromic, spy
+    Enter a request:
+  time: "Sun, 26 Mar 2023 12:49:44 UTC"
 record: -1

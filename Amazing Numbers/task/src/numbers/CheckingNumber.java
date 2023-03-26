@@ -71,8 +71,8 @@ public class CheckingNumber {
         }
         sum = Arrays.stream(digits).sum();
 
-        for (int i = 0; i < digits.length; i++) {
-            product = product * digits[i];
+        for (long digit : digits) {
+            product = product * digit;
         }
 
         if (sum == product){

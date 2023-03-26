@@ -1,53 +1,121 @@
 package numbers;
 
+import java.util.Arrays;
 import java.util.StringJoiner;
 
 public class CheckingNumberWithProperty {
 
-    static long selectingNumbers (String[] inputArray){
-        long[] selectedNumbers;
+    static long[] selectingNumbers (String[] inputArray, Property property){
         int counter = 0;
         long startNumber = Long.parseLong(inputArray[0]);
         long repeat = Long.parseLong(inputArray[1]);
-        String propertyOnDemand = inputArray[2].toLowerCase();
+        long[] selectedNumbers = new long[(int) repeat];
 
-        /**
-         * Dupa tam a nie pętla "for" w tym switchu. Trzeba zmienić to na pętlę "do-while",
-         * która będzie szukała liczb. Gdy liczba zostanie znaleziona, podbijamy "counter"
-         * do momentu, aż zrówna się on z "repeat"
-         */
+        switch (property) {
+            case EVEN:
+                do {
+                    long number = startNumber;
+                    if (number % 2 == 0) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case ODD:
+                do {
+                    long number = startNumber;
+                    if (number % 2 != 0) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case BUZZ:
+                do {
+                    long number = startNumber;
+                    long firstPart = number / 10;
+                    long secondPart = number % 10;
+                    long secondPartMultiply = secondPart * 2;
+                    long subtract = firstPart - secondPartMultiply;
 
-        switch (propertyOnDemand) {
-            case even:
-                for (long i = 1; i <= repeat; i++) {
+                    if (subtract % 7 == 0 || secondPart == 7) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case DUCK:
+                do {
+                    long number = startNumber;
+                    if (String.valueOf(number).contains("0")) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case PALINDROMIC:
+                do {
+                    long number = startNumber;
+                    String numberToString = String.valueOf(number);
+                    StringBuffer reversedNumber = new StringBuffer(numberToString);
+                    String reversed = reversedNumber.reverse().toString();
 
-                }
-            case odd:
-                for (long i = 1; i <= repeat; i++) {
+                    if (numberToString.equals(reversed)) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case GAPFUL:
+                do {
+                    long number = startNumber;
+                    String stringNumber = Long.toString(number);
+                    String[] parts = stringNumber.split("");
+                    long isGapful = -1;
 
-                }
-            case buzz:
-                for (long i = 1; i <= repeat; i++) {
+                    if (stringNumber.length() > 2) {
+                        String dividedBy = parts[0] + parts[parts.length - 1];
+                        long dividedByNumber = Long.parseLong(dividedBy);
+                        isGapful = number % dividedByNumber;
+                    }
+                    if (isGapful == 0) {
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
+            case SPY:
+                do {
+                    long number = startNumber;
+                    long sum;
+                    long product = 1;
+                    String stringNumber = Long.toString(number);
+                    String[] parts = stringNumber.split("");
+                    long[] digits = new long[parts.length];
+                    for (int i = 0; i < parts.length; i++) {
+                        digits[i] = Long.parseLong(parts[i]);
+                    }
+                    sum = Arrays.stream(digits).sum();
 
-                }
-            case duck:
-                for (long i = 1; i <= repeat; i++) {
+                    for (long digit : digits) {
+                        product = product * digit;
+                    }
 
-                }
-            case palindromic:
-                for (long i = 1; i <= repeat; i++) {
-
-                }
-            case gapful:
-                for (long i = 1; i <= repeat; i++) {
-
-                }
-            case spy:
-                for (long i = 1; i <= repeat; i++) {
-
-                }
+                    if (sum == product){
+                        selectedNumbers[counter] = number;
+                        counter++;
+                    }
+                    number++;
+                } while (counter != repeat);
+                break;
         }
-
+        return selectedNumbers;
     }
 
     static void properties3 (long[] selectedNumbers){

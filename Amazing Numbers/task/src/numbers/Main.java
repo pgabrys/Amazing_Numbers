@@ -23,7 +23,8 @@ public class Main {
             String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
             long number = Long.parseLong(inputArray[0]);
-            String property;
+            Property property = Property.valueOf(inputArray[2].toUpperCase());
+            boolean propertyOk = false;
 
             boolean natural = true;
 
@@ -47,14 +48,21 @@ public class Main {
                 }
             }
 
+            if () {
+                propertyOk = true;
+            } else {
+                System.out.println("The property " + property + " is wrong.\n" +
+                        "Available properties: " + Property.values());
+            }
+
             if (natural && inputArray.length == 1) {
                 CheckingNumber.properties(number);
             }
             if (natural && inputArray.length == 2) {
                 CheckingMultipleNumbers.properties2(inputArray);
             }
-            if (natural && inputArray.length == 3){
-
+            if (natural && inputArray.length == 3 && propertyOk == true){
+                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(inputArray, property));
             }
 
         } while (!exit);
