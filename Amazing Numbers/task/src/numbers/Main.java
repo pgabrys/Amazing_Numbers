@@ -23,8 +23,23 @@ public class Main {
             String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
             long number = Long.parseLong(inputArray[0]);
-            Property property = Property.valueOf(inputArray[2].toUpperCase());
-            boolean propertyOk = false;
+
+            Property property = null;
+            try {
+                property = Property.valueOf(inputArray[2].toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("The property [SUN] is wrong.\n" +
+                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]");
+            }
+
+            /**
+             * Do tworzenia objektów number bazować na tablicy input. Stworzyć if'y lub switch, gdzie będzie
+             * sprawdzany parametr długości tablicy. Na bazie tego, będzie wybrany odpowiedni konstruktor.
+             *
+             * A potem "wystarczy" tylko przerobić wszystko, aby sprawdzało obiekty xD
+             */
+
+
 
             boolean natural = true;
 
@@ -48,12 +63,7 @@ public class Main {
                 }
             }
 
-            if () {
-                propertyOk = true;
-            } else {
-                System.out.println("The property " + property + " is wrong.\n" +
-                        "Available properties: " + Property.values());
-            }
+
 
             if (natural && inputArray.length == 1) {
                 CheckingNumber.properties(number);
@@ -61,7 +71,7 @@ public class Main {
             if (natural && inputArray.length == 2) {
                 CheckingMultipleNumbers.properties2(inputArray);
             }
-            if (natural && inputArray.length == 3 && propertyOk == true){
+            if (natural && inputArray.length == 3 && property != null){
                 CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(inputArray, property));
             }
 

@@ -8,13 +8,13 @@ public class CheckingNumberWithProperty {
     static long[] selectingNumbers (String[] inputArray, Property property){
         int counter = 0;
         long startNumber = Long.parseLong(inputArray[0]);
+        long number = startNumber;
         long repeat = Long.parseLong(inputArray[1]);
         long[] selectedNumbers = new long[(int) repeat];
 
         switch (property) {
             case EVEN:
                 do {
-                    long number = startNumber;
                     if (number % 2 == 0) {
                         selectedNumbers[counter] = number;
                         counter++;
@@ -24,7 +24,6 @@ public class CheckingNumberWithProperty {
                 break;
             case ODD:
                 do {
-                    long number = startNumber;
                     if (number % 2 != 0) {
                         selectedNumbers[counter] = number;
                         counter++;
@@ -34,7 +33,6 @@ public class CheckingNumberWithProperty {
                 break;
             case BUZZ:
                 do {
-                    long number = startNumber;
                     long firstPart = number / 10;
                     long secondPart = number % 10;
                     long secondPartMultiply = secondPart * 2;
@@ -49,7 +47,6 @@ public class CheckingNumberWithProperty {
                 break;
             case DUCK:
                 do {
-                    long number = startNumber;
                     if (String.valueOf(number).contains("0")) {
                         selectedNumbers[counter] = number;
                         counter++;
@@ -59,7 +56,6 @@ public class CheckingNumberWithProperty {
                 break;
             case PALINDROMIC:
                 do {
-                    long number = startNumber;
                     String numberToString = String.valueOf(number);
                     StringBuffer reversedNumber = new StringBuffer(numberToString);
                     String reversed = reversedNumber.reverse().toString();
