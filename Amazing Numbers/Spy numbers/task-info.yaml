@@ -942,40 +942,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13202#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #29
-
-    The request: &quot;1 10 May&quot; has one wrong property. Expected message: &quot;The property ... is wrong&quot;.
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Welcome to Amazing Numbers!
-
-    Supported requests:
-     - enter a natural number to know its properties;
-     - enter two natural numbers to obtain the properties of the list:
-        * the first parameter represents a starting number;
-        * the second parameters show how many consecutive numbers are to be processed;
-     - two natural numbers and a property to search for;
-     - separate the parameters with one space;
-     - enter 0 to exit.
-    Enter a request:
-    &gt; 1 10 May
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    0 is even, buzz, duck, palindromic, spy
-    Enter a request:
-  time: "Sun, 26 Mar 2023 12:49:44 UTC"
+  message: Congratulations!
+  time: "Sun, 02 Apr 2023 14:23:24 UTC"
 record: -1

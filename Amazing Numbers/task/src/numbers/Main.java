@@ -22,51 +22,55 @@ public class Main {
             System.out.println("Enter a request:");
             String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
-            long number = Long.parseLong(inputArray[0]);
+            long firstParameter = Long.parseLong(inputArray[0]);
 
+            Number number = new Number();
             Property property = null;
-            try {
-                property = Property.valueOf(inputArray[2].toUpperCase());
-            } catch (IllegalArgumentException e) {
-                System.out.println("The property [SUN] is wrong.\n" +
-                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]");
+            if (inputArray.length == 3){
+                try {
+                    property = Property.valueOf(inputArray[2].toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("The property [" + inputArray[2].toUpperCase() + "] is wrong.\n" +
+                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]");
+                }
             }
 
-            /**
-             * Do tworzenia objektów number bazować na tablicy input. Stworzyć if'y lub switch, gdzie będzie
-             * sprawdzany parametr długości tablicy. Na bazie tego, będzie wybrany odpowiedni konstruktor.
-             *
-             * A potem "wystarczy" tylko przerobić wszystko, aby sprawdzało obiekty xD
-             */
-
-
+            switch (inputArray.length) {
+                case 1:
+                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+                    break;
+                case 2:
+                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+                    number.setRepeats(Long.parseLong(inputArray[1]));
+                    break;
+                case 3:
+                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+                    number.setRepeats(Long.parseLong(inputArray[1]));
+                    number.setProperty(property);
+                    break;
+            }
 
             boolean natural = true;
 
-            //CheckingRequest.exit(exit, number);
-            //CheckingRequest.isNatural(inputArray,natural,number);
-
-            if (number == 0) {
+            if (inputArray.length == 1 && number.getChosenNumber() == 0) {
                 exit = true;
                 System.out.println("Goodbye!");
             }
 
             if (inputArray.length == 2 || inputArray.length == 3) {
-                if (Long.parseLong(inputArray[1]) < 1) {
+                if (number.getRepeats() < 1) {
                     natural = false;
                     System.out.println("The second parameter should be a natural number.");
                 }
             } else {
-                if (number < 1) {
+                if (number.getChosenNumber() < 1) {
                     natural = false;
                     System.out.println("The first parameter should be a natural number or zero.");
                 }
             }
 
-
-
             if (natural && inputArray.length == 1) {
-                CheckingNumber.properties(number);
+                CheckingNumber.properties(firstParameter);
             }
             if (natural && inputArray.length == 2) {
                 CheckingMultipleNumbers.properties2(inputArray);
@@ -74,8 +78,6 @@ public class Main {
             if (natural && inputArray.length == 3 && property != null){
                 CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(inputArray, property));
             }
-
         } while (!exit);
-
     }
 }

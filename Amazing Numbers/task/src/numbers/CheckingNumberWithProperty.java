@@ -69,7 +69,6 @@ public class CheckingNumberWithProperty {
                 break;
             case GAPFUL:
                 do {
-                    long number = startNumber;
                     String stringNumber = Long.toString(number);
                     String[] parts = stringNumber.split("");
                     long isGapful = -1;
@@ -88,7 +87,6 @@ public class CheckingNumberWithProperty {
                 break;
             case SPY:
                 do {
-                    long number = startNumber;
                     long sum;
                     long product = 1;
                     String stringNumber = Long.toString(number);
