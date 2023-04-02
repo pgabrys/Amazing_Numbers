@@ -5,91 +5,90 @@ import java.util.StringJoiner;
 
 public class CheckingNumberWithProperty {
 
-    static long[] selectingNumbers (String[] inputArray, Property property){
+    static long[] selectingNumbers (Number number, Property property){
         int counter = 0;
-        long startNumber = Long.parseLong(inputArray[0]);
-        long number = startNumber;
-        long repeat = Long.parseLong(inputArray[1]);
+        long numberUnderCheck = number.chosenNumber;
+        long repeat = number.repeats;
         long[] selectedNumbers = new long[(int) repeat];
 
         switch (property) {
-            case EVEN:
+            case EVEN -> {
                 do {
-                    if (number % 2 == 0) {
-                        selectedNumbers[counter] = number;
+                    if (numberUnderCheck % 2 == 0) {
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case ODD:
+            }
+            case ODD -> {
                 do {
-                    if (number % 2 != 0) {
-                        selectedNumbers[counter] = number;
+                    if (numberUnderCheck % 2 != 0) {
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case BUZZ:
+            }
+            case BUZZ -> {
                 do {
-                    long firstPart = number / 10;
-                    long secondPart = number % 10;
+                    long firstPart = numberUnderCheck / 10;
+                    long secondPart = numberUnderCheck % 10;
                     long secondPartMultiply = secondPart * 2;
                     long subtract = firstPart - secondPartMultiply;
 
                     if (subtract % 7 == 0 || secondPart == 7) {
-                        selectedNumbers[counter] = number;
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case DUCK:
+            }
+            case DUCK -> {
                 do {
-                    if (String.valueOf(number).contains("0")) {
-                        selectedNumbers[counter] = number;
+                    if (String.valueOf(numberUnderCheck).contains("0")) {
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case PALINDROMIC:
+            }
+            case PALINDROMIC -> {
                 do {
-                    String numberToString = String.valueOf(number);
+                    String numberToString = String.valueOf(numberUnderCheck);
                     StringBuffer reversedNumber = new StringBuffer(numberToString);
                     String reversed = reversedNumber.reverse().toString();
 
                     if (numberToString.equals(reversed)) {
-                        selectedNumbers[counter] = number;
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case GAPFUL:
+            }
+            case GAPFUL -> {
                 do {
-                    String stringNumber = Long.toString(number);
+                    String stringNumber = Long.toString(numberUnderCheck);
                     String[] parts = stringNumber.split("");
                     long isGapful = -1;
 
                     if (stringNumber.length() > 2) {
                         String dividedBy = parts[0] + parts[parts.length - 1];
                         long dividedByNumber = Long.parseLong(dividedBy);
-                        isGapful = number % dividedByNumber;
+                        isGapful = numberUnderCheck % dividedByNumber;
                     }
                     if (isGapful == 0) {
-                        selectedNumbers[counter] = number;
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
-            case SPY:
+            }
+            case SPY -> {
                 do {
                     long sum;
                     long product = 1;
-                    String stringNumber = Long.toString(number);
+                    String stringNumber = Long.toString(numberUnderCheck);
                     String[] parts = stringNumber.split("");
                     long[] digits = new long[parts.length];
                     for (int i = 0; i < parts.length; i++) {
@@ -101,13 +100,13 @@ public class CheckingNumberWithProperty {
                         product = product * digit;
                     }
 
-                    if (sum == product){
-                        selectedNumbers[counter] = number;
+                    if (sum == product) {
+                        selectedNumbers[counter] = numberUnderCheck;
                         counter++;
                     }
-                    number++;
+                    numberUnderCheck++;
                 } while (counter != repeat);
-                break;
+            }
         }
         return selectedNumbers;
     }

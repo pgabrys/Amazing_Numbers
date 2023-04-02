@@ -112,8 +112,8 @@ public class CheckingMultipleNumbers {
         }
         sum = Arrays.stream(digits).sum();
 
-        for (int i = 0; i < digits.length; i++) {
-            product = product * digits[i];
+        for (long digit : digits) {
+            product = product * digit;
         }
 
         if (sum == product){
@@ -125,9 +125,9 @@ public class CheckingMultipleNumbers {
         return stringSpy;
     }
 
-    static void properties2(String[] inputArray) {
-        long startNumber = Long.parseLong(inputArray[0]);
-        long repeat = Long.parseLong(inputArray[1]);
+    static void properties2(Number number) {
+        long startNumber = number.chosenNumber;
+        long repeat = number.repeats;
 
         /** Próba na upgrade StringJoinera, to zamiast użyć .add i fuckji if,
          * to użyć .merge. To powinno pozwolić na usunięcie if'a, bo to działa tylko

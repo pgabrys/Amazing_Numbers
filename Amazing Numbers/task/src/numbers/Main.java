@@ -22,7 +22,6 @@ public class Main {
             System.out.println("Enter a request:");
             String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
-            long firstParameter = Long.parseLong(inputArray[0]);
 
             Number number = new Number();
             Property property = null;
@@ -36,18 +35,16 @@ public class Main {
             }
 
             switch (inputArray.length) {
-                case 1:
-                    number.setChosenNumber(Long.parseLong(inputArray[0]));
-                    break;
-                case 2:
+                case 1 -> number.setChosenNumber(Long.parseLong(inputArray[0]));
+                case 2 -> {
                     number.setChosenNumber(Long.parseLong(inputArray[0]));
                     number.setRepeats(Long.parseLong(inputArray[1]));
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     number.setChosenNumber(Long.parseLong(inputArray[0]));
                     number.setRepeats(Long.parseLong(inputArray[1]));
                     number.setProperty(property);
-                    break;
+                }
             }
 
             boolean natural = true;
@@ -70,13 +67,13 @@ public class Main {
             }
 
             if (natural && inputArray.length == 1) {
-                CheckingNumber.properties(firstParameter);
+                CheckingNumber.properties(number);
             }
             if (natural && inputArray.length == 2) {
-                CheckingMultipleNumbers.properties2(inputArray);
+                CheckingMultipleNumbers.properties2(number);
             }
             if (natural && inputArray.length == 3 && property != null){
-                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(inputArray, property));
+                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, property));
             }
         } while (!exit);
     }
