@@ -10,13 +10,14 @@ public class Main {
                 Welcome to Amazing Numbers!
 
                 Supported requests:
-                 - enter a natural number to know its properties;
-                 - enter two natural numbers to obtain the properties of the list:
+                  - enter a natural number to know its properties;\s
+                  - enter two natural numbers to obtain the properties of the list:
                     * the first parameter represents a starting number;
-                    * the second parameters show how many consecutive numbers are to be processed;
-                 - two natural numbers and a property to search for;
-                 - separate the parameters with one space;
-                 - enter 0 to exit.""");
+                    * the second parameter shows how many consecutive numbers are to be printed;
+                  - two natural numbers and a property to search for;
+                  - two natural numbers and two properties to search for;
+                  - separate the parameters with one space;
+                  - enter 0 to exit.""");
 
         do {
             System.out.println("Enter a request:");
@@ -24,15 +25,35 @@ public class Main {
             String[] inputArray = input.split(" ");
 
             Number number = new Number();
-            Property property = null;
+            Property firstProperty = null;
+            Property secondProperty = null;
             if (inputArray.length == 3){
                 try {
-                    property = Property.valueOf(inputArray[2].toUpperCase());
+                    firstProperty = Property.valueOf(inputArray[2].toUpperCase());
                 } catch (IllegalArgumentException e) {
                     System.out.println("The property [" + inputArray[2].toUpperCase() + "] is wrong.\n" +
-                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY]");
+                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
                 }
             }
+
+            if (inputArray.length == 4){
+                try {
+                    firstProperty = Property.valueOf(inputArray[2].toUpperCase());
+                    secondProperty = Property.valueOf(inputArray[3].toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("The properties [" + inputArray[2].toUpperCase() + ", "
+                            + inputArray[3].toUpperCase() + "] are wrong.\n" +
+                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+                }
+            }
+
+            /**
+             * W tym miejscu trzebo dodać porównanie enumów/inputu, czy aby przypadkiem nie tworzą zakazanych par.
+             * Prawdopodobnie trzeba polecieć na IFie. Ale może jest jakaś gotowa metoda do enumów?
+             * Trzeba by poszperać na necie.
+             */
+
+
 
             switch (inputArray.length) {
                 case 1 -> number.setChosenNumber(Long.parseLong(inputArray[0]));
@@ -43,7 +64,13 @@ public class Main {
                 case 3 -> {
                     number.setChosenNumber(Long.parseLong(inputArray[0]));
                     number.setRepeats(Long.parseLong(inputArray[1]));
-                    number.setProperty(property);
+                    number.setFirstProperty(firstProperty);
+                }
+                case 4 -> {
+                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+                    number.setRepeats(Long.parseLong(inputArray[1]));
+                    number.setFirstProperty(firstProperty);
+                    number.setSecondProperty(secondProperty);
                 }
             }
 
@@ -72,8 +99,8 @@ public class Main {
             if (natural && inputArray.length == 2) {
                 CheckingMultipleNumbers.properties2(number);
             }
-            if (natural && inputArray.length == 3 && property != null){
-                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, property));
+            if (natural && inputArray.length == 3 && firstProperty != null){
+                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, firstProperty));
             }
         } while (!exit);
     }

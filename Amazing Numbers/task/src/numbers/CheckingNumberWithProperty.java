@@ -7,8 +7,8 @@ public class CheckingNumberWithProperty {
 
     static long[] selectingNumbers (Number number, Property property){
         int counter = 0;
-        long numberUnderCheck = number.chosenNumber;
-        long repeat = number.repeats;
+        long numberUnderCheck = number.getChosenNumber();
+        long repeat = number.getRepeats();
         long[] selectedNumbers = new long[(int) repeat];
 
         switch (property) {
@@ -107,6 +107,26 @@ public class CheckingNumberWithProperty {
                     numberUnderCheck++;
                 } while (counter != repeat);
             }
+            case SQUARE -> {
+               do {
+                   double toCheck = Math.sqrt(numberUnderCheck);
+                   if (toCheck % 1 == 0) {
+                       selectedNumbers[counter] = numberUnderCheck;
+                       counter++;
+                   }
+                   numberUnderCheck++;
+               } while (counter != repeat);
+            }
+            case SUNNY -> {
+                do {
+                    double toCheck = Math.sqrt(numberUnderCheck + 1);
+                    if (toCheck % 1 == 0) {
+                        selectedNumbers[counter] = numberUnderCheck;
+                        counter++;
+                    }
+                    numberUnderCheck++;
+                } while (counter != repeat);
+            }
         }
         return selectedNumbers;
     }
@@ -135,6 +155,9 @@ public class CheckingNumberWithProperty {
             }
             if (CheckingMultipleNumbers.isSpy(x).length() > 2) {
                 result.add(CheckingMultipleNumbers.isSpy(x));
+            }
+            if (CheckingMultipleNumbers.isSunny(x).length() > 2) {
+                result.add(CheckingMultipleNumbers.isSunny(x));
             }
 
             System.out.println(x + " is " + result);

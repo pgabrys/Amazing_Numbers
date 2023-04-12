@@ -125,9 +125,27 @@ public class CheckingMultipleNumbers {
         return stringSpy;
     }
 
+    static String isSquare(long number) {
+        double toCheck = Math.sqrt(number);
+        String stringSquare = "";
+        if (toCheck % 1 == 0) {
+            stringSquare = "square";
+        }
+        return stringSquare;
+    }
+
+    static String isSunny(long number) {
+        double toCheck = Math.sqrt(number + 1);
+        String stringSunny = "";
+        if (toCheck % 1 == 0) {
+            stringSunny = "sunny";
+        }
+        return stringSunny;
+    }
+
     static void properties2(Number number) {
-        long startNumber = number.chosenNumber;
-        long repeat = number.repeats;
+        long startNumber = number.getChosenNumber();
+        long repeat = number.getRepeats();
 
         /** Próba na upgrade StringJoinera, to zamiast użyć .add i fuckji if,
          * to użyć .merge. To powinno pozwolić na usunięcie if'a, bo to działa tylko
@@ -156,6 +174,12 @@ public class CheckingMultipleNumbers {
             }
             if (isSpy(startNumber).length() > 2) {
                 result.add(isSpy(startNumber));
+            }
+            if (isSquare(startNumber).length() > 2) {
+                result.add(isSquare(startNumber));
+            }
+            if (isSunny(startNumber).length() > 2) {
+                result.add(isSunny(startNumber));
             }
 
             System.out.println(startNumber + " is " + result);

@@ -4,18 +4,18 @@ import java.util.Arrays;
 
 public class CheckingNumber {
 
-    static boolean isOdd(Number number) {
-        return number.chosenNumber % 2 != 0;
+    private static boolean isOdd(Number number) {
+        return number.getChosenNumber() % 2 != 0;
     }
 
-    static boolean isEven(Number number) {
-        return number.chosenNumber % 2 == 0;
+    private static boolean isEven(Number number) {
+        return number.getChosenNumber() % 2 == 0;
     }
 
-    static boolean isBuzz(Number number) {
+    private static boolean isBuzz(Number number) {
         boolean buzz = false;
-        long firstPart = number.chosenNumber / 10;
-        long secondPart = number.chosenNumber % 10;
+        long firstPart = number.getChosenNumber() / 10;
+        long secondPart = number.getChosenNumber() % 10;
         long secondPartMultiply = secondPart * 2;
         long subtract = firstPart - secondPartMultiply;
 
@@ -25,13 +25,13 @@ public class CheckingNumber {
         return buzz;
     }
 
-    static boolean isDuck(Number number) {
-        return String.valueOf(number.chosenNumber).contains("0");
+    private static boolean isDuck(Number number) {
+        return String.valueOf(number.getChosenNumber()).contains("0");
     }
 
-    static boolean isPalindromic(Number number) {
+    private static boolean isPalindromic(Number number) {
         boolean palindromic = false;
-        String numberToString = String.valueOf(number.chosenNumber);
+        String numberToString = String.valueOf(number.getChosenNumber());
         StringBuffer reversedNumber = new StringBuffer(numberToString);
         String reversed = reversedNumber.reverse().toString();
 
@@ -42,16 +42,16 @@ public class CheckingNumber {
         return palindromic;
     }
 
-    static boolean isGapful(Number number) {
+    private static boolean isGapful(Number number) {
         boolean gapful = false;
-        String stringNumber = Long.toString(number.chosenNumber);
+        String stringNumber = Long.toString(number.getChosenNumber());
         String[] parts = stringNumber.split("");
         long isGapful = -1;
 
         if (stringNumber.length() > 2) {
             String dividedBy = parts[0] + parts[parts.length - 1];
             long dividedByNumber = Long.parseLong(dividedBy);
-            isGapful = number.chosenNumber % dividedByNumber;
+            isGapful = number.getChosenNumber() % dividedByNumber;
         }
         if (isGapful == 0) {
             gapful = true;
@@ -59,11 +59,11 @@ public class CheckingNumber {
         return gapful;
     }
 
-    static boolean isSpy(Number number) {
+    private static boolean isSpy(Number number) {
         boolean spy = false;
         long sum;
         long product = 1;
-        String stringNumber = Long.toString(number.chosenNumber);
+        String stringNumber = Long.toString(number.getChosenNumber());
         String[] parts = stringNumber.split("");
         long[] digits = new long[parts.length];
         for (int i = 0; i < parts.length; i++) {
@@ -81,15 +81,29 @@ public class CheckingNumber {
         return spy;
     }
 
+    private static boolean isSunny(Number number) {
+        double sqrt = Math.sqrt(number.getChosenNumber() + 1);
+        return sqrt % 1 == 0;
+    }
+
+    private static boolean isSquare(Number number) {
+        double sqrt = Math.sqrt(number.getChosenNumber());
+        return sqrt % 1 == 0;
+    }
+    
+
+
     static void properties(Number number) {
-        System.out.println("Properties of " + number.chosenNumber + "\n" +
+        System.out.println("Properties of " + number.getChosenNumber() + "\n" +
                 "        even: " + isEven(number) + "\n" +
                 "         odd: " + isOdd(number) + "\n" +
                 "        buzz: " + isBuzz(number) + "\n" +
                 "        duck: " + isDuck(number) + "\n" +
-                "        gapful: " + isGapful(number) + "\n" +
+                "      gapful: " + isGapful(number) + "\n" +
                 " palindromic: " + isPalindromic(number) + "\n" +
-                "           spy: " + isSpy(number));
+                "         spy: " + isSpy(number) + "\n" +
+                "       sunny: " + isSunny(number) + "\n" +
+                "      square: " + isSquare(number));
     }
 
 

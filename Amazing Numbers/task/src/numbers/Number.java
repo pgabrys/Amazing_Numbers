@@ -1,9 +1,10 @@
 package numbers;
 
 public class Number {
-    long chosenNumber;
-    long repeats;
-    Property property;
+    private long chosenNumber;
+    private long repeats;
+    private Property firstProperty;
+    private Property secondProperty;
 
     public Number() {
     }
@@ -17,10 +18,17 @@ public class Number {
         this.repeats = repeats;
     }
 
-    public Number(long number, long repeats, Property property) {
+    public Number(long number, long repeats, Property firstProperty) {
         this.chosenNumber = number;
         this.repeats = repeats;
-        this.property = property;
+        this.firstProperty = firstProperty;
+    }
+
+    public Number(long chosenNumber, long repeats, Property firstProperty, Property secondProperty) {
+        this.chosenNumber = chosenNumber;
+        this.repeats = repeats;
+        this.firstProperty = firstProperty;
+        this.secondProperty = secondProperty;
     }
 
     public long getChosenNumber() {
@@ -39,11 +47,19 @@ public class Number {
         this.repeats = repeats;
     }
 
-    public Property getProperty() {
-        return property;
+    public Property getFirstProperty() {
+        return firstProperty;
     }
 
-    public void setProperty(Property property) {
-        this.property = property;
+    public void setFirstProperty(Property firstProperty) {
+        this.firstProperty = firstProperty;
+    }
+
+    public Property getSecondProperty() {
+        return secondProperty;
+    }
+
+    public void setSecondProperty(Property secondProperty) {
+        this.secondProperty = secondProperty;
     }
 }
