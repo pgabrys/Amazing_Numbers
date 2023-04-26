@@ -22,4 +22,24 @@ public class CheckingRequest {
         }
         return natural;
     }
+
+    static void printMutuallyExclusive(String[] inputArray) {
+        System.out.println("The request contains mutually exclusive properties: [" + inputArray[2].toUpperCase() + ", " + inputArray[3].toUpperCase() + "]\n" +
+                "There are no numbers with these properties.");
+    }
+
+    static void printFirstPropertyWrong(String[] inputArray) {
+        System.out.println("The property [" + inputArray[2].toUpperCase() + "] is wrong.\n" +
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+    }
+
+    static void printSecondPropertyWrong(String[] inputArray) {
+        System.out.println("The property [" + inputArray[3].toUpperCase() + "] is wrong.\n" +
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+    }
+
+    static void printBothPropertiesWrong(String[] inputArray) {
+        System.out.println("The properties [" + inputArray[2].toUpperCase() + ", " + inputArray[3].toUpperCase() + "] are wrong.\n" +
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+    }
 }

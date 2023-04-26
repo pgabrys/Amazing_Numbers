@@ -1,6 +1,7 @@
 package numbers;
 
 import java.util.Scanner;
+import static numbers.CheckingRequest.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,31 +28,63 @@ public class Main {
             Number number = new Number();
             Property firstProperty = null;
             Property secondProperty = null;
-            if (inputArray.length == 3){
-                try {
-                    firstProperty = Property.valueOf(inputArray[2].toUpperCase());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("The property [" + inputArray[2].toUpperCase() + "] is wrong.\n" +
-                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+
+            switch (inputArray.length) {
+                case 3 -> {
+                    try {
+                        firstProperty = Property.valueOf(inputArray[2].toUpperCase());
+                    } catch (IllegalArgumentException e) {
+                        printFirstPropertyWrong(inputArray);
+                    }
+                }
+                case 4 -> {
+                    boolean firstPropertyWrong = false;
+                    boolean secondPropertyWrong = false;
+                    try {
+                        firstProperty = Property.valueOf(inputArray[2].toUpperCase());
+                    } catch (IllegalArgumentException e) {
+                        firstPropertyWrong = true;
+                    }
+
+                    try {
+                        secondProperty = Property.valueOf(inputArray[3].toUpperCase());
+                    } catch (IllegalArgumentException e) {
+                        secondPropertyWrong = true;
+                    }
+
+                    if (firstPropertyWrong) {
+                        printFirstPropertyWrong(inputArray);
+                    } else if (secondPropertyWrong) {
+                        printSecondPropertyWrong(inputArray);
+                    } else if (firstPropertyWrong && secondPropertyWrong) {
+                        printBothPropertiesWrong(inputArray);
+                    }
                 }
             }
 
-            if (inputArray.length == 4){
-                try {
-                    firstProperty = Property.valueOf(inputArray[2].toUpperCase());
-                    secondProperty = Property.valueOf(inputArray[3].toUpperCase());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("The properties [" + inputArray[2].toUpperCase() + ", "
-                            + inputArray[3].toUpperCase() + "] are wrong.\n" +
-                            "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
-                }
+
+            boolean notExclusive = true;
+
+            if (firstProperty == Property.EVEN && secondProperty == Property.ODD) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
+            } else if (firstProperty == Property.ODD && secondProperty == Property.EVEN) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
+            } else if (firstProperty == Property.DUCK && secondProperty == Property.SPY) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
+            } else if (firstProperty == Property.SPY && secondProperty == Property.DUCK) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
+            } else if (firstProperty == Property.SUNNY && secondProperty == Property.SQUARE) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
+            } else if (firstProperty == Property.SQUARE && secondProperty == Property.SUNNY) {
+                notExclusive = false;
+                printMutuallyExclusive(inputArray);
             }
 
-            /**
-             * W tym miejscu trzebo dodać porównanie enumów/inputu, czy aby przypadkiem nie tworzą zakazanych par.
-             * Prawdopodobnie trzeba polecieć na IFie. Ale może jest jakaś gotowa metoda do enumów?
-             * Trzeba by poszperać na necie.
-             */
 
 
 
@@ -101,6 +134,9 @@ public class Main {
             }
             if (natural && inputArray.length == 3 && firstProperty != null){
                 CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, firstProperty));
+            }
+            if (natural && inputArray.length == 4 && firstProperty != null && secondProperty != null && notExclusive) {
+
             }
         } while (!exit);
     }
