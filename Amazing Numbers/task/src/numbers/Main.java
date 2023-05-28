@@ -52,9 +52,9 @@ public class Main {
                         secondPropertyWrong = true;
                     }
 
-                    if (firstPropertyWrong && secondPropertyWrong == false) {
+                    if (firstPropertyWrong && !secondPropertyWrong) {
                         printFirstPropertyWrong(inputArray);
-                    } else if (secondPropertyWrong && firstPropertyWrong == false) {
+                    } else if (secondPropertyWrong && !firstPropertyWrong) {
                         printSecondPropertyWrong(inputArray);
                     } else if (firstPropertyWrong && secondPropertyWrong) {
                         printBothPropertiesWrong(inputArray);
