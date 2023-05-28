@@ -10,15 +10,16 @@ public class CheckingNumbersWithTwoProperties {
         long repeat = number.getRepeats();
         long[] selectedNumbers = new long[(int) repeat];
 
+
         do {
             if (checkingFirstProperty(number,firstProperty) == true
                     && checkingSecondProperty(number, secondProperty) == true) {
                 selectedNumbers[counter] = numberUnderCheck;
-                numberUnderCheck++;
-                number.setChosenNumber(numberUnderCheck);
                 counter++;
             }
-        } while (counter == repeat);
+            numberUnderCheck++;
+            number.setChosenNumber(numberUnderCheck);
+        } while (counter != repeat);
 
 
         /**
@@ -71,7 +72,7 @@ public class CheckingNumbersWithTwoProperties {
     }
 
     private static boolean checkingNumber(Number number, Property property) {
-        boolean propertyOk;
+        boolean propertyOk = false;
         switch (property) {
             case EVEN -> {
                propertyOk = CheckingNumber.isEven(number);

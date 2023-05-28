@@ -52,9 +52,9 @@ public class Main {
                         secondPropertyWrong = true;
                     }
 
-                    if (firstPropertyWrong) {
+                    if (firstPropertyWrong && secondPropertyWrong == false) {
                         printFirstPropertyWrong(inputArray);
-                    } else if (secondPropertyWrong) {
+                    } else if (secondPropertyWrong && firstPropertyWrong == false) {
                         printSecondPropertyWrong(inputArray);
                     } else if (firstPropertyWrong && secondPropertyWrong) {
                         printBothPropertiesWrong(inputArray);
@@ -136,6 +136,7 @@ public class Main {
                 CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, firstProperty));
             }
             if (natural && inputArray.length == 4 && firstProperty != null && secondProperty != null && notExclusive) {
+                CheckingNumberWithProperty.properties3(CheckingNumbersWithTwoProperties.selectingTwoProperties(number, firstProperty, secondProperty));
 
             }
         } while (!exit);

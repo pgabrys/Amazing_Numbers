@@ -159,6 +159,9 @@ public class CheckingNumberWithProperty {
             if (CheckingMultipleNumbers.isSunny(x).length() > 2) {
                 result.add(CheckingMultipleNumbers.isSunny(x));
             }
+            if (CheckingMultipleNumbers.isSquare(x).length() > 2) {
+                result.add(CheckingMultipleNumbers.isSquare(x));
+            }
 
             System.out.println(x + " is " + result);
         }
