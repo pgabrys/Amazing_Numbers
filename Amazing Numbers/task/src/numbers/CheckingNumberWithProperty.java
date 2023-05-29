@@ -127,6 +127,27 @@ public class CheckingNumberWithProperty {
                     numberUnderCheck++;
                 } while (counter != repeat);
             }
+            case JUMPING ->  {
+                do {
+                    String stringNumber = Long.toString(numberUnderCheck);
+                    String[] parts = stringNumber.split("");
+                    int size = parts.length;
+                    long[] digits = new long[size];
+                    for (int i = 0; i < size; i++) {
+                        digits[i] = Integer.parseInt(parts[i]);
+                    }
+
+                        for (int i = 0; i < digits.length - 1; i++) {
+                            long result = digits[i + 1] - digits[i];
+                            if (Math.abs(result) != 1) {
+                                selectedNumbers[counter] = numberUnderCheck;
+                                counter++;
+                            }
+                            numberUnderCheck++;
+                        }
+
+                } while (counter != repeat);
+            }
         }
         return selectedNumbers;
     }
@@ -161,6 +182,9 @@ public class CheckingNumberWithProperty {
             }
             if (CheckingMultipleNumbers.isSquare(x).length() > 2) {
                 result.add(CheckingMultipleNumbers.isSquare(x));
+            }
+            if (CheckingMultipleNumbers.isJumping(x).length() > 2) {
+                result.add(CheckingMultipleNumbers.isJumping(x));
             }
 
             System.out.println(x + " is " + result);

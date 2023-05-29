@@ -33,6 +33,7 @@ public class CheckingNumbersWithTwoProperties {
             case SPY -> propertyOk = CheckingNumber.isSpy(number);
             case SQUARE -> propertyOk = CheckingNumber.isSquare(number);
             case SUNNY -> propertyOk = CheckingNumber.isSunny(number);
+            case JUMPING -> propertyOk = CheckingNumber.isJumping(number);
         }
         return propertyOk;
     }

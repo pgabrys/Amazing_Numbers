@@ -90,6 +90,27 @@ public class CheckingNumber {
         double sqrt = Math.sqrt(number.getChosenNumber());
         return sqrt % 1 == 0;
     }
+
+    protected static boolean isJumping(Number number) {
+        boolean jumping = true;
+        String stringNumber = Long.toString(number.getChosenNumber());
+        String[] parts = stringNumber.split("");
+        int size = parts.length;
+        long[] digits = new long[size];
+        for (int i = 0; i < size; i++) {
+            digits[i] = Integer.parseInt(parts[i]);
+        }
+
+        if (number.getChosenNumber() > 10){
+            for (int i = 0; i < digits.length - 1; i++) {
+                long result = digits[i + 1] - digits[i];
+                if (Math.abs(result) != 1) {
+                    jumping = false;
+                }
+            }
+        }
+        return jumping;
+    }
     
 
 
@@ -103,7 +124,8 @@ public class CheckingNumber {
                 " palindromic: " + isPalindromic(number) + "\n" +
                 "         spy: " + isSpy(number) + "\n" +
                 "       sunny: " + isSunny(number) + "\n" +
-                "      square: " + isSquare(number));
+                "      square: " + isSquare(number) + "\n" +
+                "     jumping: " + isJumping(number));
     }
 
 

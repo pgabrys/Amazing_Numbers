@@ -30,16 +30,16 @@ public class CheckingRequest {
 
     static void printFirstPropertyWrong(String[] inputArray) {
         System.out.println("The property [" + inputArray[2].toUpperCase() + "] is wrong.\n" +
-                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
     }
 
     static void printSecondPropertyWrong(String[] inputArray) {
         System.out.println("The property [" + inputArray[3].toUpperCase() + "] is wrong.\n" +
-                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
     }
 
     static void printBothPropertiesWrong(String[] inputArray) {
         System.out.println("The properties [" + inputArray[2].toUpperCase() + ", " + inputArray[3].toUpperCase() + "] are wrong.\n" +
-                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+                "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
     }
 }

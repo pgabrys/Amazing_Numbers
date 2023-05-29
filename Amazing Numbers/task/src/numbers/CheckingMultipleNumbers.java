@@ -143,6 +143,32 @@ public class CheckingMultipleNumbers {
         return stringSunny;
     }
 
+    static String isJumping(long number) {
+        String stringJumping = "";
+        boolean jumping = true;
+        String stringNumber = Long.toString(number);
+        String[] parts = stringNumber.split("");
+        int size = parts.length;
+        long[] digits = new long[size];
+        for (int i = 0; i < size; i++) {
+            digits[i] = Integer.parseInt(parts[i]);
+        }
+
+        if (number > 10){
+            for (int i = 0; i < digits.length - 1; i++) {
+                long result = digits[i + 1] - digits[i];
+                if (Math.abs(result) != 1) {
+                    jumping = false;
+                }
+            }
+        }
+
+        if (jumping) {
+            stringJumping = "jumping";
+        }
+        return stringJumping;
+    }
+
     static void properties2(Number number) {
         long startNumber = number.getChosenNumber();
         long repeat = number.getRepeats();
@@ -180,6 +206,9 @@ public class CheckingMultipleNumbers {
             }
             if (isSunny(startNumber).length() > 2) {
                 result.add(isSunny(startNumber));
+            }
+            if (isJumping(startNumber).length() > 2) {
+                result.add(isJumping(startNumber));
             }
 
             System.out.println(startNumber + " is " + result);
