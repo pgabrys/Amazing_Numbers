@@ -129,13 +129,14 @@ public class CheckingNumberWithProperty {
             }
             case JUMPING ->  {
                 do {
-                    String stringNumber = Long.toString(numberUnderCheck);
-                    String[] parts = stringNumber.split("");
-                    int size = parts.length;
-                    long[] digits = new long[size];
-                    for (int i = 0; i < size; i++) {
-                        digits[i] = Integer.parseInt(parts[i]);
-                    }
+                    if (numberUnderCheck > 10) {
+                        String stringNumber = Long.toString(numberUnderCheck);
+                        String[] parts = stringNumber.split("");
+                        int size = parts.length;
+                        long[] digits = new long[size];
+                        for (int i = 0; i < size; i++) {
+                            digits[i] = Integer.parseInt(parts[i]);
+                        }
 
                         for (int i = 0; i < digits.length - 1; i++) {
                             long result = digits[i + 1] - digits[i];
@@ -143,8 +144,13 @@ public class CheckingNumberWithProperty {
                                 selectedNumbers[counter] = numberUnderCheck;
                                 counter++;
                             }
-                            numberUnderCheck++;
                         }
+                    } else {
+                        selectedNumbers[counter] = numberUnderCheck;
+                        counter++;
+                    }
+
+                    numberUnderCheck++;
 
                 } while (counter != repeat);
             }

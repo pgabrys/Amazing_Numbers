@@ -93,15 +93,16 @@ public class CheckingNumber {
 
     protected static boolean isJumping(Number number) {
         boolean jumping = true;
-        String stringNumber = Long.toString(number.getChosenNumber());
-        String[] parts = stringNumber.split("");
-        int size = parts.length;
-        long[] digits = new long[size];
-        for (int i = 0; i < size; i++) {
-            digits[i] = Integer.parseInt(parts[i]);
-        }
 
-        if (number.getChosenNumber() > 10){
+        if (number.getChosenNumber() > 10) {
+            String stringNumber = Long.toString(number.getChosenNumber());
+            String[] parts = stringNumber.split("");
+            int size = parts.length;
+            long[] digits = new long[size];
+            for (int i = 0; i < size; i++) {
+                digits[i] = Integer.parseInt(parts[i]);
+            }
+
             for (int i = 0; i < digits.length - 1; i++) {
                 long result = digits[i + 1] - digits[i];
                 if (Math.abs(result) != 1) {

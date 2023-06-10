@@ -5,6 +5,15 @@ import static numbers.CheckingRequest.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        /**
+         * Jest logika dla Jumping, ale przy sprawdzany kilku liczb z jedną własciwością wpada w nieskończoną pętlę - do sprawdzenia.
+         *
+         * Pozostaje zaimplementowanie sprawdzania wielu (powyżej dwóch) właściwości naraz.
+         * Tutaj trzeba raczej stworzyć w objekcie parametr tablicę właściwości do sprawdzenia,
+         * a w logice za pomocą pętli for/for each przechadzaćsię po tej tablicy i sprawdzać właściwość dla danej liczby - coś w ten deseń
+         */
+
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
         System.out.println("""

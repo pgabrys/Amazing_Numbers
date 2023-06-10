@@ -1415,18 +1415,6 @@ files:
 feedback_link: https://hyperskill.org/learn/step/13203#comment
 status: Failed
 feedback:
-  message: "Wrong answer in test #17\n\nThe property &quot;JUMPING&quot; was not found\
-    \ in the output.\n\nPlease find below the output of your program during this failed\
-    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
-    \ input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n \
-    \ - enter a natural number to know its properties; \n  - enter two natural numbers\
-    \ to obtain the properties of the list:\n    * the first parameter represents\
-    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
-    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
-    \  - two natural numbers and two properties to search for;\n  - separate the parameters\
-    \ with one space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1\nProperties\
-    \ of 1\n        even: false\n         odd: true\n        buzz: false\n       \
-    \ duck: false\n      gapful: false\n palindromic: true\n         spy: true\n \
-    \      sunny: false\n      square: true\nEnter a request:"
-  time: "Sun, 28 May 2023 11:44:59 UTC"
+  message: Compilation Failed
+  time: "Sat, 10 Jun 2023 17:15:32 UTC"
 record: 6

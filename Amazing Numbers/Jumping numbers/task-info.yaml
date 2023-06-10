@@ -1560,49 +1560,22 @@ files:
         }
     }
   learner_created: true
+- name: src/numbers/CheckingMultipleProperties.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13204#comment
 status: Failed
 feedback:
-  message: "Error in test #36\n\nIn this test, the program is running for a long time,\
-    \ more than 15 seconds. Most likely, the program has gone into an infinite loop.\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n  - enter a natural\
-    \ number to know its properties; \n  - enter two natural numbers to obtain the\
-    \ properties of the list:\n    * the first parameter represents a starting number;\n\
-    \    * the second parameter shows how many consecutive numbers are to be printed;\n\
-    \  - two natural numbers and a property to search for;\n  - two natural numbers\
-    \ and two properties to search for;\n  - separate the parameters with one space;\n\
-    \  - enter 0 to exit.\nEnter a request:\n&gt; 1 10 BUZZ\n7 is odd, buzz, palindromic,\
-    \ spy, jumping\n14 is even, buzz\n17 is odd, buzz\n21 is odd, buzz, jumping\n\
-    27 is odd, buzz\n28 is even, buzz\n35 is odd, buzz, sunny\n37 is odd, buzz\n42\
-    \ is even, buzz\n47 is odd, buzz\nEnter a request:\n&gt; 1 10 DUCK\n10 is even,\
-    \ duck, jumping\n20 is even, duck\n30 is even, duck\n40 is even, duck\n50 is even,\
-    \ duck\n60 is even, duck\n70 is even, buzz, duck\n80 is even, duck, sunny\n90\
-    \ is even, duck\n100 is even, duck, gapful, square\nEnter a request:\n&gt; 1 10\
-    \ PALINDROMIC\n1 is odd, palindromic, spy, square, jumping\n2 is even, palindromic,\
-    \ spy, jumping\n3 is odd, palindromic, spy, sunny, jumping\n4 is even, palindromic,\
-    \ spy, square, jumping\n5 is odd, palindromic, spy, jumping\n6 is even, palindromic,\
-    \ spy, jumping\n7 is odd, buzz, palindromic, spy, jumping\n8 is even, palindromic,\
-    \ spy, sunny, jumping\n9 is odd, palindromic, spy, square, jumping\n11 is odd,\
-    \ palindromic\nEnter a request:\n&gt; 1 10 GAPFUL\n100 is even, duck, gapful,\
-    \ square\n105 is odd, buzz, duck, gapful\n108 is even, duck, gapful\n110 is even,\
-    \ duck, gapful\n120 is even, duck, gapful, sunny\n121 is odd, palindromic, gapful,\
-    \ square, jumping\n130 is even, duck, gapful\n132 is even, gapful, spy\n135 is\
-    \ odd, gapful\n140 is even, buzz, duck, gapful\nEnter a request:\n&gt; 1 10 SPY\n\
-    1 is odd, palindromic, spy, square, jumping\n2 is even, palindromic, spy, jumping\n\
-    3 is odd, palindromic, spy, sunny, jumping\n4 is even, palindromic, spy, square,\
-    \ jumping\n5 is odd, palindromic, spy, jumping\n6 is even, palindromic, spy, jumping\n\
-    7 is odd, buzz, palindromic, spy, jumping\n8 is even, palindromic, spy, sunny,\
-    \ jumping\n9 is odd, palindromic, spy, square, jumping\n22 is even, palindromic,\
-    \ spy\nEnter a request:\n&gt; 1 10 SQUARE\n1 is odd, palindromic, spy, square,\
-    \ jumping\n4 is even, palindromic, spy, square, jumping\n9 is odd, palindromic,\
-    \ spy, square, jumping\n16 is even, square\n25 is odd, square\n36 is even, square\n\
-    49 is odd, buzz, square\n64 is even, square\n81 is odd, square\n100 is even, duck,\
-    \ gapful, square\nEnter a request:\n&gt; 1 10 SUNNY\n3 is odd, palindromic, spy,\
-    \ sunny, jumping\n8 is even, palindromic, spy, sunny, jumping\n15 is odd, sunny\n\
-    24 is even, sunny\n35 is odd, buzz, sunny\n48 is even, sunny\n63 is odd, buzz,\
-    \ sunny\n80 is even, duck, sunny\n99 is odd, palindromic, sunny\n120 is even,\
-    \ duck, gapful, sunny\nEnter a request:\n&gt; 1 10 JUMPING"
-  time: "Mon, 29 May 2023 18:36:19 UTC"
+  message: "Wrong answer in test #55\n\nExpected 8 non blank lines but actual output\
+    \ contains 2 lines.\n\nPlease find below the output of your program during this\
+    \ failed test.\nNote that the &#39;&gt;&#39; character indicates the beginning\
+    \ of the input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n\
+    \  - enter a natural number to know its properties; \n  - enter two natural numbers\
+    \ to obtain the properties of the list:\n    * the first parameter represents\
+    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
+    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
+    \  - two natural numbers and two properties to search for;\n  - separate the parameters\
+    \ with one space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1 7 odd spy palindromic\n\
+    The first parameter should be a natural number or zero.\nEnter a request:"
+  time: "Sat, 10 Jun 2023 17:32:42 UTC"
 record: 7

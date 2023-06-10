@@ -5,6 +5,7 @@ public class Number {
     private long repeats;
     private Property firstProperty;
     private Property secondProperty;
+    private Property properties[];
 
     public Number() {
     }
@@ -29,6 +30,12 @@ public class Number {
         this.repeats = repeats;
         this.firstProperty = firstProperty;
         this.secondProperty = secondProperty;
+    }
+
+    public Number(long chosenNumber, long repeats, Property[] properties) {
+        this.chosenNumber = chosenNumber;
+        this.repeats = repeats;
+        this.properties = properties;
     }
 
     public long getChosenNumber() {
@@ -61,5 +68,13 @@ public class Number {
 
     public void setSecondProperty(Property secondProperty) {
         this.secondProperty = secondProperty;
+    }
+
+    public Property[] getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Property[] properties) {
+        this.properties = properties;
     }
 }
