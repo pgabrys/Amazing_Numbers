@@ -1566,16 +1566,6 @@ files:
 feedback_link: https://hyperskill.org/learn/step/13204#comment
 status: Failed
 feedback:
-  message: "Wrong answer in test #55\n\nExpected 8 non blank lines but actual output\
-    \ contains 2 lines.\n\nPlease find below the output of your program during this\
-    \ failed test.\nNote that the &#39;&gt;&#39; character indicates the beginning\
-    \ of the input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n\
-    \  - enter a natural number to know its properties; \n  - enter two natural numbers\
-    \ to obtain the properties of the list:\n    * the first parameter represents\
-    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
-    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
-    \  - two natural numbers and two properties to search for;\n  - separate the parameters\
-    \ with one space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1 7 odd spy palindromic\n\
-    The first parameter should be a natural number or zero.\nEnter a request:"
-  time: "Sat, 10 Jun 2023 17:32:42 UTC"
+  message: Compilation Failed
+  time: "Sun, 11 Jun 2023 12:45:42 UTC"
 record: 7

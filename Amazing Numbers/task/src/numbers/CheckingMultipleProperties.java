@@ -2,20 +2,52 @@ package numbers;
 
 public class CheckingMultipleProperties {
     static long[] multipleProperties(Number number, Property properties[]) {
-        int counter = 0;
+        int counterNumbers = 0;
         long numberUnderCheck = number.getChosenNumber();
         long repeat = number.getRepeats();
         long[] selectedNumbers = new long[(int) repeat];
 
-            do {
-                if (checkingFirstProperty(number, firstProperty)
-                        && checkingSecondProperty(number, secondProperty)) {
-                    selectedNumbers[counter] = numberUnderCheck;
-                    counter++;
+        do {
+            for (Property property : properties) {
+                int counterProperties = 0;
+                if (checkingNumber(number, property)) {
+                    counterProperties++;
                 }
+
+                if (counterProperties == properties.length) {
+                    selectedNumbers[counterNumbers] = numberUnderCheck;
+                    counterNumbers++;
+                }
+
                 numberUnderCheck++;
                 number.setChosenNumber(numberUnderCheck);
-            } while (counter != repeat);
+            }
+        } while (counterNumbers == repeat);
+
+
+
+//        for (int i = 0; i < properties.length; i++) {
+//            int counterProperties = 0;
+//            if (checkingNumber(number, properties[i])) {
+//                counterProperties++;
+//            }
+//
+//            if (counterProperties == properties.length) {
+//                selectedNumbers[counterNumbers] = numberUnderCheck;
+//                numberUnderCheck++;
+//                number.setChosenNumber(numberUnderCheck);
+//            }
+//        }
+
+//            do {
+//                if (checkingFirstProperty(number, firstProperty)
+//                        && checkingSecondProperty(number, secondProperty)) {
+//                    selectedNumbers[counter] = numberUnderCheck;
+//                    counter++;
+//                }
+//                numberUnderCheck++;
+//                number.setChosenNumber(numberUnderCheck);
+//            } while (counter != repeat);
 
         return selectedNumbers;
     }
@@ -37,18 +69,4 @@ public class CheckingMultipleProperties {
         return propertyOk;
     }
 
-    private static boolean checkingProperties(Number number, Property properties[]) {
-        for (int i = 0; i <= properties.length; i++) {
-            checkingNumber(number, properties[i]);
-        }
-
-    }
-
-    private static boolean checkingFirstProperty(Number number, Property property) {
-        return checkingNumber(number, number.getFirstProperty());
-    }
-
-    private static boolean checkingSecondProperty(Number number, Property property) {
-        return checkingNumber(number, number.getSecondProperty());
-    }
 }

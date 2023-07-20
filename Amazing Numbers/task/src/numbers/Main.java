@@ -38,6 +38,13 @@ public class Main {
             Property firstProperty = null;
             Property secondProperty = null;
 
+            Property[] properties = new Property[inputArray.length - 2];
+
+            for (int i = 2; i <= inputArray.length; i++) {
+                properties[i - 2] = Property.valueOf(inputArray[i].toUpperCase());
+            }
+            number.setProperties(properties);
+
             switch (inputArray.length) {
                 case 3 -> {
                     try {
@@ -73,26 +80,27 @@ public class Main {
 
 
             boolean notExclusive = true;
+            CheckingRequest.isExclusive(properties,notExclusive);
 
-            if (firstProperty == Property.EVEN && secondProperty == Property.ODD) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            } else if (firstProperty == Property.ODD && secondProperty == Property.EVEN) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            } else if (firstProperty == Property.DUCK && secondProperty == Property.SPY) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            } else if (firstProperty == Property.SPY && secondProperty == Property.DUCK) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            } else if (firstProperty == Property.SUNNY && secondProperty == Property.SQUARE) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            } else if (firstProperty == Property.SQUARE && secondProperty == Property.SUNNY) {
-                notExclusive = false;
-                printMutuallyExclusive(inputArray);
-            }
+//            if (firstProperty == Property.EVEN && secondProperty == Property.ODD) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            } else if (firstProperty == Property.ODD && secondProperty == Property.EVEN) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            } else if (firstProperty == Property.DUCK && secondProperty == Property.SPY) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            } else if (firstProperty == Property.SPY && secondProperty == Property.DUCK) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            } else if (firstProperty == Property.SUNNY && secondProperty == Property.SQUARE) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            } else if (firstProperty == Property.SQUARE && secondProperty == Property.SUNNY) {
+//                notExclusive = false;
+//                printMutuallyExclusive(inputArray);
+//            }
 
 
 
@@ -103,17 +111,17 @@ public class Main {
                     number.setChosenNumber(Long.parseLong(inputArray[0]));
                     number.setRepeats(Long.parseLong(inputArray[1]));
                 }
-                case 3 -> {
-                    number.setChosenNumber(Long.parseLong(inputArray[0]));
-                    number.setRepeats(Long.parseLong(inputArray[1]));
-                    number.setFirstProperty(firstProperty);
-                }
-                case 4 -> {
-                    number.setChosenNumber(Long.parseLong(inputArray[0]));
-                    number.setRepeats(Long.parseLong(inputArray[1]));
-                    number.setFirstProperty(firstProperty);
-                    number.setSecondProperty(secondProperty);
-                }
+//                case 3 -> {
+//                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+//                    number.setRepeats(Long.parseLong(inputArray[1]));
+//                    number.setFirstProperty(firstProperty);
+//                }
+//                case 4 -> {
+//                    number.setChosenNumber(Long.parseLong(inputArray[0]));
+//                    number.setRepeats(Long.parseLong(inputArray[1]));
+//                    number.setFirstProperty(firstProperty);
+//                    number.setSecondProperty(secondProperty);
+//                }
             }
 
             boolean natural = true;
