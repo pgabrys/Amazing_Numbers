@@ -24,31 +24,6 @@ public class CheckingMultipleProperties {
             }
         } while (counterNumbers == repeat);
 
-
-
-//        for (int i = 0; i < properties.length; i++) {
-//            int counterProperties = 0;
-//            if (checkingNumber(number, properties[i])) {
-//                counterProperties++;
-//            }
-//
-//            if (counterProperties == properties.length) {
-//                selectedNumbers[counterNumbers] = numberUnderCheck;
-//                numberUnderCheck++;
-//                number.setChosenNumber(numberUnderCheck);
-//            }
-//        }
-
-//            do {
-//                if (checkingFirstProperty(number, firstProperty)
-//                        && checkingSecondProperty(number, secondProperty)) {
-//                    selectedNumbers[counter] = numberUnderCheck;
-//                    counter++;
-//                }
-//                numberUnderCheck++;
-//                number.setChosenNumber(numberUnderCheck);
-//            } while (counter != repeat);
-
         return selectedNumbers;
     }
 
