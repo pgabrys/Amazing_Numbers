@@ -1566,16 +1566,20 @@ files:
 feedback_link: https://hyperskill.org/learn/step/13204#comment
 status: Failed
 feedback:
-  message: "Wrong answer in test #36\n\nExpected 11 non blank lines but actual output\
-    \ contains 1 lines.\n\nPlease find below the output of your program during this\
-    \ failed test.\nNote that the &#39;&gt;&#39; character indicates the beginning\
-    \ of the input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n\
-    \  - enter a natural number to know its properties; \n  - enter two natural numbers\
-    \ to obtain the properties of the list:\n    * the first parameter represents\
-    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
-    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
-    \  - two natural numbers and two properties to search for;\n  - separate the parameters\
-    \ with one space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1 10 BUZZ\nEnter\
-    \ a request:"
-  time: "Mon, 31 Jul 2023 15:48:01 UTC"
+  message: "Wrong answer in test #51\n\nThe request: &quot;1 10 boy friend&quot; has\
+    \ two or more incorrect properties. Expected that error message contains: &quot;The\
+    \ properties ... are wrong&quot;.\n\nPlease find below the output of your program\
+    \ during this failed test.\nNote that the &#39;&gt;&#39; character indicates the\
+    \ beginning of the input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported\
+    \ requests:\n  - enter a natural number to know its properties; \n  - enter two\
+    \ natural numbers to obtain the properties of the list:\n    * the first parameter\
+    \ represents a starting number;\n    * the second parameter shows how many consecutive\
+    \ numbers are to be printed;\n  - two natural numbers and a property to search\
+    \ for;\n  - two natural numbers and two properties to search for;\n  - separate\
+    \ the parameters with one space;\n  - enter 0 to exit.\nEnter a request:\n&gt;\
+    \ 1 10 boy friend\nThe property [boy] is wrong.\nAvailable properties: [EVEN,\
+    \ ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]\nThe property\
+    \ [friend] is wrong.\nAvailable properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC,\
+    \ GAPFUL, SPY, SQUARE, SUNNY, JUMPING]\nEnter a request:"
+  time: "Wed, 02 Aug 2023 19:28:11 UTC"
 record: 7

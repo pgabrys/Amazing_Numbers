@@ -35,77 +35,7 @@ public class Main {
             String[] inputArray = input.split(" ");
 
             Number number = new Number();
-            Property firstProperty = null;
-            Property secondProperty = null;
-
             boolean notExclusive = true;
-
-//            if (inputArray.length >= 3) {
-//                Property[] properties = new Property[inputArray.length - 2];
-//                for (int i = 2; i <= inputArray.length; i++) {
-//                    properties[i - 2] = Property.valueOf(inputArray[i].toUpperCase());
-//                }
-////                number.setProperties(properties);
-//                CheckingRequest.isExclusive(properties,notExclusive);
-//            }
-
-
-
-
-//            switch (inputArray.length) {
-//                case 3 -> {
-//                    try {
-//                        firstProperty = Property.valueOf(inputArray[2].toUpperCase());
-//                    } catch (IllegalArgumentException e) {
-//                        printFirstPropertyWrong(inputArray);
-//                    }
-//                }
-//                case 4 -> {
-//                    boolean firstPropertyWrong = false;
-//                    boolean secondPropertyWrong = false;
-//                    try {
-//                        firstProperty = Property.valueOf(inputArray[2].toUpperCase());
-//                    } catch (IllegalArgumentException e) {
-//                        firstPropertyWrong = true;
-//                    }
-//
-//                    try {
-//                        secondProperty = Property.valueOf(inputArray[3].toUpperCase());
-//                    } catch (IllegalArgumentException e) {
-//                        secondPropertyWrong = true;
-//                    }
-//
-//                    if (firstPropertyWrong && !secondPropertyWrong) {
-//                        printFirstPropertyWrong(inputArray);
-//                    } else if (secondPropertyWrong && !firstPropertyWrong) {
-//                        printSecondPropertyWrong(inputArray);
-//                    } else if (firstPropertyWrong && secondPropertyWrong) {
-//                        printBothPropertiesWrong(inputArray);
-//                    }
-//                }
-//            }
-
-
-//            if (firstProperty == Property.EVEN && secondProperty == Property.ODD) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            } else if (firstProperty == Property.ODD && secondProperty == Property.EVEN) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            } else if (firstProperty == Property.DUCK && secondProperty == Property.SPY) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            } else if (firstProperty == Property.SPY && secondProperty == Property.DUCK) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            } else if (firstProperty == Property.SUNNY && secondProperty == Property.SQUARE) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            } else if (firstProperty == Property.SQUARE && secondProperty == Property.SUNNY) {
-//                notExclusive = false;
-//                printMutuallyExclusive(inputArray);
-//            }
-//            Property[] properties = new Property[inputArray.length - 2];
 
             Property[] properties = new Property[0];
             boolean propertyWrong = false;
@@ -138,17 +68,6 @@ public class Main {
                         }
                     }
                 }
-//                case 3 -> {
-//                    number.setChosenNumber(Long.parseLong(inputArray[0]));
-//                    number.setRepeats(Long.parseLong(inputArray[1]));
-//                    number.setFirstProperty(firstProperty);
-//                }
-//                case 4 -> {
-//                    number.setChosenNumber(Long.parseLong(inputArray[0]));
-//                    number.setRepeats(Long.parseLong(inputArray[1]));
-//                    number.setFirstProperty(firstProperty);
-//                    number.setSecondProperty(secondProperty);
-//                }
             }
 
             boolean natural = true;
@@ -170,16 +89,19 @@ public class Main {
                 }
             }
 
-            if (natural && inputArray.length == 1) {
-                CheckingNumber.properties(number);
+            if (natural) {
+                if (inputArray.length == 1) {
+                    CheckingNumber.properties(number);
+                }
+                if (inputArray.length == 2) {
+                    CheckingMultipleNumbers.properties2(number);
+                }
+                if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
+                    CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
+                }
             }
 
-            if (natural && inputArray.length == 2) {
-                CheckingMultipleNumbers.properties2(number);
-            }
-            if (natural && inputArray.length >= 3 && notExclusive && !propertyWrong) {
-                CheckingMultipleProperties.multipleProperties(number, properties);
-            }
+
 //            if (natural && inputArray.length == 3 && firstProperty != null){
 //                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, firstProperty));
 //            }

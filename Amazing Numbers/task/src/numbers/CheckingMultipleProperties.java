@@ -6,6 +6,7 @@ public class CheckingMultipleProperties {
         long numberUnderCheck = number.getChosenNumber();
         long repeat = number.getRepeats();
         long[] selectedNumbers = new long[(int) repeat];
+        boolean dadad = false;
 
         do {
             for (Property property : properties) {
@@ -22,7 +23,11 @@ public class CheckingMultipleProperties {
                 numberUnderCheck++;
                 number.setChosenNumber(numberUnderCheck);
             }
-        } while (counterNumbers == repeat);
+
+            if (counterNumbers == repeat) {
+                dadad = true;
+            }
+        } while (!dadad);
 
         return selectedNumbers;
     }
