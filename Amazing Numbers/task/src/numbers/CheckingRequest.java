@@ -47,9 +47,6 @@ public class CheckingRequest {
         boolean sunny = false;
         boolean square = false;
         for (int i = 0; i < properties.length; i++){
-//            if (properties[i] == Property.EVEN) {
-//                even = true;
-//            }
             switch (properties[i]) {
                 case EVEN -> {even = true;}
                 case ODD -> {odd = true;}

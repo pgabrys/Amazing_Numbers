@@ -1,5 +1,8 @@
 package numbers;
 
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import static numbers.CheckingRequest.*;
 
@@ -51,12 +54,22 @@ public class Main {
                         number.setChosenNumber(Long.parseLong(inputArray[0]));
                         number.setRepeats(Long.parseLong(inputArray[1]));
                         properties = new Property[inputArray.length - 2];
+                        List<String> wrongProperties = new ArrayList<>();
                         for (int i = 2; i < inputArray.length; i++) {
                             try {
                                 properties[i - 2] = Property.valueOf(inputArray[i].toUpperCase());
                             } catch (IllegalArgumentException e) {
                                 propertyWrong = true;
-                                System.out.println("The property [" + inputArray[i] + "] is wrong.\n" +
+                                wrongProperties.add(inputArray[i]);
+                            }
+                        }
+                        if (propertyWrong) {
+                            if (wrongProperties.size() == 1) {
+                                System.out.println("The property [" + wrongProperties.get(0) + "] is wrong.\n" +
+                                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
+                            } else {
+                                String list = wrongProperties.toString();
+                                System.out.println("The properties " + list + " are wrong.\n" +
                                         "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
                             }
                         }
