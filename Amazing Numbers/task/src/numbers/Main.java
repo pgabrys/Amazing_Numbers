@@ -1,6 +1,6 @@
 package numbers;
 
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,14 +8,6 @@ import static numbers.CheckingRequest.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        /**
-         * Jest logika dla Jumping, ale przy sprawdzany kilku liczb z jedną własciwością wpada w nieskończoną pętlę - do sprawdzenia.
-         *
-         * Pozostaje zaimplementowanie sprawdzania wielu (powyżej dwóch) właściwości naraz.
-         * Tutaj trzeba raczej stworzyć w objekcie parametr tablicę właściwości do sprawdzenia,
-         * a w logice za pomocą pętli for/for each przechadzaćsię po tej tablicy i sprawdzać właściwość dla danej liczby - coś w ten deseń
-         */
 
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
@@ -74,7 +66,7 @@ public class Main {
                             }
                         }
                         if (!propertyWrong) {
-                            CheckingRequest.isExclusive(properties,notExclusive);
+                            notExclusive = CheckingRequest.isExclusive(properties,notExclusive);
                             if (notExclusive) {
                                 number.setProperties(properties);
                             }
@@ -113,14 +105,6 @@ public class Main {
                     CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
                 }
             }
-
-
-//            if (natural && inputArray.length == 3 && firstProperty != null){
-//                CheckingNumberWithProperty.properties3(CheckingNumberWithProperty.selectingNumbers(number, firstProperty));
-//            }
-//            if (natural && inputArray.length == 4 && firstProperty != null && secondProperty != null && notExclusive) {
-//                CheckingNumberWithProperty.properties3(CheckingNumbersWithTwoProperties.selectingTwoProperties(number, firstProperty, secondProperty));
-//            }
         } while (!exit);
     }
 }

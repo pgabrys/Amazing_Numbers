@@ -1564,18 +1564,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13204#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Error in test #55\n\nIn this test, the program is running for a long time,\
-    \ more than 15 seconds. Most likely, the program has gone into an infinite loop.\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n  - enter a natural\
-    \ number to know its properties; \n  - enter two natural numbers to obtain the\
-    \ properties of the list:\n    * the first parameter represents a starting number;\n\
-    \    * the second parameter shows how many consecutive numbers are to be printed;\n\
-    \  - two natural numbers and a property to search for;\n  - two natural numbers\
-    \ and two properties to search for;\n  - separate the parameters with one space;\n\
-    \  - enter 0 to exit.\nEnter a request:\n&gt; 1 7 odd spy palindromic"
-  time: "Mon, 07 Aug 2023 18:01:03 UTC"
+  message: Congratulations!
+  time: "Tue, 08 Aug 2023 18:10:47 UTC"
 record: 7
