@@ -1028,6 +1028,643 @@ files:
         enum Parameter {ONE, TWO, THREE}
     }
   learner_created: false
+- name: src/numbers/CheckingMultipleProperties.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class CheckingMultipleProperties {
+        static long[] multipleProperties(Number number, Property properties[]) {
+            int counterNumbers = 0;
+            long numberUnderCheck = number.getChosenNumber();
+            long repeat = number.getRepeats();
+            long[] selectedNumbers = new long[(int) repeat];
+            boolean dadad = false;
+
+            do {
+                int counterProperties = 0;
+                for (Property property : properties) {
+                    if (checkingNumber(number, property)) {
+                        counterProperties++;
+                    }
+
+                    if (counterProperties == properties.length) {
+                        selectedNumbers[counterNumbers] = numberUnderCheck;
+                        counterNumbers++;
+                    }
+                }
+                numberUnderCheck++;
+                number.setChosenNumber(numberUnderCheck);
+
+                if (counterNumbers == repeat) {
+                    dadad = true;
+                }
+            } while (!dadad);
+
+            return selectedNumbers;
+        }
+
+        private static boolean checkingNumber(Number number, Property property) {
+            boolean propertyOk = false;
+            switch (property) {
+                case EVEN -> propertyOk = CheckingNumber.isEven(number);
+                case ODD -> propertyOk = CheckingNumber.isOdd(number);
+                case BUZZ -> propertyOk = CheckingNumber.isBuzz(number);
+                case DUCK -> propertyOk = CheckingNumber.isDuck(number);
+                case PALINDROMIC -> propertyOk = CheckingNumber.isPalindromic(number);
+                case GAPFUL -> propertyOk = CheckingNumber.isGapful(number);
+                case SPY -> propertyOk = CheckingNumber.isSpy(number);
+                case SQUARE -> propertyOk = CheckingNumber.isSquare(number);
+                case SUNNY -> propertyOk = CheckingNumber.isSunny(number);
+                case JUMPING -> propertyOk = CheckingNumber.isJumping(number);
+            }
+            return propertyOk;
+        }
+
+    }
+  learner_created: true
+- name: src/numbers/CheckingNumberWithProperty.java
+  visible: true
+  text: |
+    package numbers;
+
+    import java.util.Arrays;
+    import java.util.StringJoiner;
+
+    public class CheckingNumberWithProperty {
+
+        static long[] selectingNumbers (Number number, Property property){
+            int counter = 0;
+            long numberUnderCheck = number.getChosenNumber();
+            long repeat = number.getRepeats();
+            long[] selectedNumbers = new long[(int) repeat];
+
+            switch (property) {
+                case EVEN -> {
+                    do {
+                        if (numberUnderCheck % 2 == 0) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case ODD -> {
+                    do {
+                        if (numberUnderCheck % 2 != 0) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case BUZZ -> {
+                    do {
+                        long firstPart = numberUnderCheck / 10;
+                        long secondPart = numberUnderCheck % 10;
+                        long secondPartMultiply = secondPart * 2;
+                        long subtract = firstPart - secondPartMultiply;
+
+                        if (subtract % 7 == 0 || secondPart == 7) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case DUCK -> {
+                    do {
+                        if (String.valueOf(numberUnderCheck).contains("0")) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case PALINDROMIC -> {
+                    do {
+                        String numberToString = String.valueOf(numberUnderCheck);
+                        StringBuffer reversedNumber = new StringBuffer(numberToString);
+                        String reversed = reversedNumber.reverse().toString();
+
+                        if (numberToString.equals(reversed)) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case GAPFUL -> {
+                    do {
+                        String stringNumber = Long.toString(numberUnderCheck);
+                        String[] parts = stringNumber.split("");
+                        long isGapful = -1;
+
+                        if (stringNumber.length() > 2) {
+                            String dividedBy = parts[0] + parts[parts.length - 1];
+                            long dividedByNumber = Long.parseLong(dividedBy);
+                            isGapful = numberUnderCheck % dividedByNumber;
+                        }
+                        if (isGapful == 0) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case SPY -> {
+                    do {
+                        long sum;
+                        long product = 1;
+                        String stringNumber = Long.toString(numberUnderCheck);
+                        String[] parts = stringNumber.split("");
+                        long[] digits = new long[parts.length];
+                        for (int i = 0; i < parts.length; i++) {
+                            digits[i] = Long.parseLong(parts[i]);
+                        }
+                        sum = Arrays.stream(digits).sum();
+
+                        for (long digit : digits) {
+                            product = product * digit;
+                        }
+
+                        if (sum == product) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case SQUARE -> {
+                   do {
+                       double toCheck = Math.sqrt(numberUnderCheck);
+                       if (toCheck % 1 == 0) {
+                           selectedNumbers[counter] = numberUnderCheck;
+                           counter++;
+                       }
+                       numberUnderCheck++;
+                   } while (counter != repeat);
+                }
+                case SUNNY -> {
+                    do {
+                        double toCheck = Math.sqrt(numberUnderCheck + 1);
+                        if (toCheck % 1 == 0) {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+                        numberUnderCheck++;
+                    } while (counter != repeat);
+                }
+                case JUMPING ->  {
+                    do {
+                        if (numberUnderCheck > 10) {
+                            String stringNumber = Long.toString(numberUnderCheck);
+                            String[] parts = stringNumber.split("");
+                            int size = parts.length;
+                            long[] digits = new long[size];
+                            for (int i = 0; i < size; i++) {
+                                digits[i] = Integer.parseInt(parts[i]);
+                            }
+
+                            for (int i = 0; i < digits.length - 1; i++) {
+                                long result = digits[i + 1] - digits[i];
+                                if (Math.abs(result) != 1) {
+                                    selectedNumbers[counter] = numberUnderCheck;
+                                    counter++;
+                                }
+                            }
+                        } else {
+                            selectedNumbers[counter] = numberUnderCheck;
+                            counter++;
+                        }
+
+                        numberUnderCheck++;
+
+                    } while (counter != repeat);
+                }
+            }
+            return selectedNumbers;
+        }
+
+        static void properties3 (long[] selectedNumbers){
+
+            for (long x : selectedNumbers) {
+                StringJoiner result = new StringJoiner(", ");
+                if (CheckingMultipleNumbers.isEven(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isEven(x));
+                }
+                if (CheckingMultipleNumbers.isOdd(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isOdd(x));
+                }
+                if (CheckingMultipleNumbers.isBuzz(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isBuzz(x));
+                }
+                if (CheckingMultipleNumbers.isDuck(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isDuck(x));
+                }
+                if (CheckingMultipleNumbers.isPalindromic(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isPalindromic(x));
+                }
+                if (CheckingMultipleNumbers.isGapful(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isGapful(x));
+                }
+                if (CheckingMultipleNumbers.isSpy(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isSpy(x));
+                }
+                if (CheckingMultipleNumbers.isSunny(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isSunny(x));
+                }
+                if (CheckingMultipleNumbers.isSquare(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isSquare(x));
+                }
+                if (CheckingMultipleNumbers.isJumping(x).length() > 2) {
+                    result.add(CheckingMultipleNumbers.isJumping(x));
+                }
+
+                System.out.println(x + " is " + result);
+            }
+        }
+
+
+
+    }
+  learner_created: true
+- name: src/numbers/Property.java
+  visible: true
+  text: |
+    package numbers;
+
+    public enum Property {
+        EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING
+    }
+  learner_created: true
+- name: src/numbers/Number.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class Number {
+        private long chosenNumber;
+        private long repeats;
+        private Property firstProperty;
+        private Property secondProperty;
+        private Property properties[];
+
+        public Number() {
+        }
+
+        public Number(long number) {
+            this.chosenNumber = number;
+        }
+
+        public Number(long number, long repeats) {
+            this.chosenNumber = number;
+            this.repeats = repeats;
+        }
+
+        public Number(long number, long repeats, Property firstProperty) {
+            this.chosenNumber = number;
+            this.repeats = repeats;
+            this.firstProperty = firstProperty;
+        }
+
+        public Number(long chosenNumber, long repeats, Property firstProperty, Property secondProperty) {
+            this.chosenNumber = chosenNumber;
+            this.repeats = repeats;
+            this.firstProperty = firstProperty;
+            this.secondProperty = secondProperty;
+        }
+
+        public Number(long chosenNumber, long repeats, Property[] properties) {
+            this.chosenNumber = chosenNumber;
+            this.repeats = repeats;
+            this.properties = properties;
+        }
+
+        public long getChosenNumber() {
+            return chosenNumber;
+        }
+
+        public void setChosenNumber(long chosenNumber) {
+            this.chosenNumber = chosenNumber;
+        }
+
+        public long getRepeats() {
+            return repeats;
+        }
+
+        public void setRepeats(long repeats) {
+            this.repeats = repeats;
+        }
+
+        public Property getFirstProperty() {
+            return firstProperty;
+        }
+
+        public void setFirstProperty(Property firstProperty) {
+            this.firstProperty = firstProperty;
+        }
+
+        public Property getSecondProperty() {
+            return secondProperty;
+        }
+
+        public void setSecondProperty(Property secondProperty) {
+            this.secondProperty = secondProperty;
+        }
+
+        public Property[] getProperties() {
+            return properties;
+        }
+
+        public void setProperties(Property[] properties) {
+            this.properties = properties;
+        }
+    }
+  learner_created: true
+- name: src/numbers/CheckingMultipleNumbers.java
+  visible: true
+  text: |
+    package numbers;
+
+    import java.util.Arrays;
+    import java.util.StringJoiner;
+
+    public class CheckingMultipleNumbers {
+
+        static String isOdd(long number) {
+            boolean odd = false;
+            String stringOdd = "";
+            if (number % 2 != 0) {
+                odd = true;
+            }
+            if (odd) {
+                stringOdd = "odd";
+            }
+            return stringOdd;
+        }
+
+
+        static String isEven(long number) {
+            boolean even = false;
+            String stringEven = "";
+            if (number % 2 == 0) {
+                even = true;
+            }
+
+            if (even) {
+                stringEven = "even";
+            }
+            return stringEven;
+        }
+
+        static String isBuzz(long number) {
+            boolean buzz = false;
+            String stringBuzz = "";
+            long firstPart = number / 10;
+            long secondPart = number % 10;
+            long secondPartMultiply = secondPart * 2;
+            long subtract = firstPart - secondPartMultiply;
+
+            if (subtract % 7 == 0 || secondPart == 7) {
+                buzz = true;
+            }
+
+            if (buzz) {
+                stringBuzz = "buzz";
+            }
+            return stringBuzz;
+        }
+
+        static String isDuck(long number) {
+            boolean duck = false;
+            String stringDuck = "";
+            if (String.valueOf(number).contains("0")) {
+                duck = true;
+            }
+            if (duck) {
+                stringDuck = "duck";
+            }
+            return stringDuck;
+        }
+
+        static String isPalindromic(long number) {
+            boolean palindromic = false;
+            String stringPalindromic = "";
+            String numberToString = String.valueOf(number);
+            StringBuffer reversedNumber = new StringBuffer(numberToString);
+            String reversed = reversedNumber.reverse().toString();
+
+            if (numberToString.equals(reversed)) {
+                palindromic = true;
+            }
+
+            if (palindromic) {
+                stringPalindromic = "palindromic";
+            }
+            return stringPalindromic;
+        }
+
+        static String isGapful(long number) {
+            boolean gapful = false;
+            String stringGapful = "";
+            String stringNumber = Long.toString(number);
+            String[] parts = stringNumber.split("");
+            long isGapful = -1;
+
+            if (stringNumber.length() > 2) {
+                String dividedBy = parts[0] + parts[parts.length - 1];
+                long dividedByNumber = Long.parseLong(dividedBy);
+                isGapful = number % dividedByNumber;
+            }
+            if (isGapful == 0) {
+                gapful = true;
+            }
+            if (gapful) {
+                stringGapful = "gapful";
+            }
+            return stringGapful;
+        }
+
+        static String isSpy(long number) {
+            boolean spy = false;
+            String stringSpy = "";
+            long sum;
+            long product = 1;
+            String stringNumber = Long.toString(number);
+            String[] parts = stringNumber.split("");
+            long[] digits = new long[parts.length];
+            for (int i = 0; i < parts.length; i++) {
+                digits[i] = Long.parseLong(parts[i]);
+            }
+            sum = Arrays.stream(digits).sum();
+
+            for (long digit : digits) {
+                product = product * digit;
+            }
+
+            if (sum == product){
+                spy = true;
+            }
+            if (spy) {
+                stringSpy = "spy";
+            }
+            return stringSpy;
+        }
+
+        static String isSquare(long number) {
+            double toCheck = Math.sqrt(number);
+            String stringSquare = "";
+            if (toCheck % 1 == 0) {
+                stringSquare = "square";
+            }
+            return stringSquare;
+        }
+
+        static String isSunny(long number) {
+            double toCheck = Math.sqrt(number + 1);
+            String stringSunny = "";
+            if (toCheck % 1 == 0) {
+                stringSunny = "sunny";
+            }
+            return stringSunny;
+        }
+
+        static String isJumping(long number) {
+            String stringJumping = "";
+            boolean jumping = true;
+            String stringNumber = Long.toString(number);
+            String[] parts = stringNumber.split("");
+            int size = parts.length;
+            long[] digits = new long[size];
+            for (int i = 0; i < size; i++) {
+                digits[i] = Integer.parseInt(parts[i]);
+            }
+
+            if (number > 10){
+                for (int i = 0; i < digits.length - 1; i++) {
+                    long result = digits[i + 1] - digits[i];
+                    if (Math.abs(result) != 1) {
+                        jumping = false;
+                    }
+                }
+            }
+
+            if (jumping) {
+                stringJumping = "jumping";
+            }
+            return stringJumping;
+        }
+
+        static void properties2(Number number) {
+            long startNumber = number.getChosenNumber();
+            long repeat = number.getRepeats();
+
+            /** Próba na upgrade StringJoinera, to zamiast użyć .add i fuckji if,
+             * to użyć .merge. To powinno pozwolić na usunięcie if'a, bo to działa tylko
+             * na nie nulle
+             */
+
+            for (long i = 1; i <= repeat; i++) {
+                StringJoiner result = new StringJoiner(", ");
+                if (isEven(startNumber).length() > 2) {
+                    result.add(isEven(startNumber));
+                }
+                if (isOdd(startNumber).length() > 2) {
+                    result.add(isOdd(startNumber));
+                }
+                if (isBuzz(startNumber).length() > 2) {
+                    result.add(isBuzz(startNumber));
+                }
+                if (isDuck(startNumber).length() > 2) {
+                    result.add(isDuck(startNumber));
+                }
+                if (isPalindromic(startNumber).length() > 2) {
+                    result.add(isPalindromic(startNumber));
+                }
+                if (isGapful(startNumber).length() > 2) {
+                    result.add(isGapful(startNumber));
+                }
+                if (isSpy(startNumber).length() > 2) {
+                    result.add(isSpy(startNumber));
+                }
+                if (isSquare(startNumber).length() > 2) {
+                    result.add(isSquare(startNumber));
+                }
+                if (isSunny(startNumber).length() > 2) {
+                    result.add(isSunny(startNumber));
+                }
+                if (isJumping(startNumber).length() > 2) {
+                    result.add(isJumping(startNumber));
+                }
+
+                System.out.println(startNumber + " is " + result);
+                startNumber++;
+            }
+        }
+    }
+  learner_created: true
+- name: src/numbers/CheckingRequest.java
+  visible: true
+  text: |
+    package numbers;
+
+    public class CheckingRequest {
+
+        static boolean isExclusive(Property[] properties, boolean notExclusive) {
+            boolean even = false;
+            boolean odd = false;
+            boolean duck = false;
+            boolean spy = false;
+            boolean sunny = false;
+            boolean square = false;
+            for (int i = 0; i < properties.length; i++){
+                switch (properties[i]) {
+                    case EVEN -> {even = true;}
+                    case ODD -> {odd = true;}
+                    case DUCK -> {duck = true;}
+                    case SPY -> {spy = true;}
+                    case SUNNY -> {sunny = true;}
+                    case SQUARE -> {square = true;}
+                }
+            }
+
+            if (even && odd) {
+                notExclusive = false;
+                System.out.println("The request contains mutually exclusive properties: [EVEN, ODD]\n" +
+                        "There are no numbers with these properties.");
+            } else if (duck && spy) {
+                notExclusive = false;
+                System.out.println("The request contains mutually exclusive properties: [DUCK, SPY]\n" +
+                        "There are no numbers with these properties.");
+            } else if (sunny && square) {
+                notExclusive = false;
+                System.out.println("The request contains mutually exclusive properties: [SQUARE, SUNNY]\n" +
+                        "There are no numbers with these properties.");
+            }
+            return notExclusive;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: "Wrong answer in test #36\n\nFor the number 2 the expected number of properties\
+    \ is 5 but the actual number of properties is 4. Expected properties are [even,\
+    \ spy, jumping, palindromic, sad]. Actual properties are [even, palindromic, spy,\
+    \ jumping]\n\nPlease find below the output of your program during this failed\
+    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
+    \ input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n \
+    \ - enter a natural number to know its properties; \n  - enter two natural numbers\
+    \ to obtain the properties of the list:\n    * the first parameter represents\
+    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
+    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
+    \  - two natural numbers and two properties to search for;\n  - a property preceded\
+    \ by minus must not be present in numbers;\n  - separate the parameters with one\
+    \ space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1 10 EVEN\n2 is even, palindromic,\
+    \ spy, jumping\n4 is even, palindromic, spy, square, jumping\n6 is even, palindromic,\
+    \ spy, jumping\n8 is even, palindromic, spy, sunny, jumping\n10 is even, duck,\
+    \ jumping\n12 is even, jumping\n14 is even, buzz\n16 is even, square\n18 is even\n\
+    20 is even, duck\nEnter a request:"
+  time: "Tue, 15 Aug 2023 15:11:35 UTC"
+record: 8

@@ -1,6 +1,8 @@
 package numbers;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringJoiner;
 
 public class CheckingMultipleNumbers {
@@ -169,6 +171,37 @@ public class CheckingMultipleNumbers {
         return stringJumping;
     }
 
+    static String isHappy(long number) {
+        String stringHappyOrSad = "";
+
+        Set<Long> unique_num = new HashSet<Long>();
+
+        while (unique_num.add(number))
+        {
+            int value = 0;
+            while (number > 0)
+            {
+                value += Math.pow(number % 10, 2);
+                number /= 10;
+            }
+            number = value;
+        }
+
+        if (number == 1) {
+            stringHappyOrSad = "happy";
+        } else {
+            stringHappyOrSad = "sad";
+        }
+
+        return stringHappyOrSad;
+    }
+
+    static String isSad(long number) {
+        String stringSad = "";
+
+        return stringSad;
+    }
+
     static void properties2(Number number) {
         long startNumber = number.getChosenNumber();
         long repeat = number.getRepeats();
@@ -209,6 +242,12 @@ public class CheckingMultipleNumbers {
             }
             if (isJumping(startNumber).length() > 2) {
                 result.add(isJumping(startNumber));
+            }
+            if (isHappy(startNumber).length() > 2) {
+                result.add(isHappy(startNumber));
+            }
+            if (isSad(startNumber).length() > 2) {
+                result.add(isSad(startNumber));
             }
 
             System.out.println(startNumber + " is " + result);

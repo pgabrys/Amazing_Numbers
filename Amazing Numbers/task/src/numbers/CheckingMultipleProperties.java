@@ -44,6 +44,8 @@ public class CheckingMultipleProperties {
             case SQUARE -> propertyOk = CheckingNumber.isSquare(number);
             case SUNNY -> propertyOk = CheckingNumber.isSunny(number);
             case JUMPING -> propertyOk = CheckingNumber.isJumping(number);
+            case HAPPY -> propertyOk = CheckingNumber.isHappy(number);
+            case SAD -> propertyOk = !CheckingNumber.isHappy(number);
         }
         return propertyOk;
     }

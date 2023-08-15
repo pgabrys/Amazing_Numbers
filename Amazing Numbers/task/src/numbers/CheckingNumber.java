@@ -1,6 +1,8 @@
 package numbers;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class CheckingNumber {
 
@@ -112,7 +114,30 @@ public class CheckingNumber {
         }
         return jumping;
     }
-    
+
+    protected static boolean isHappy (Number number) {
+        boolean happy = false;
+        long num = number.getChosenNumber();
+        Set<Long> unique_num = new HashSet<Long>();
+
+        while (unique_num.add(num))
+        {
+            int value = 0;
+            while (num > 0)
+            {
+                value += Math.pow(num % 10, 2);
+                num /= 10;
+            }
+            num = value;
+        }
+
+        if (num == 1) {
+            happy = true;
+        }
+
+        return happy;
+    }
+
 
 
     static void properties(Number number) {
@@ -126,7 +151,9 @@ public class CheckingNumber {
                 "         spy: " + isSpy(number) + "\n" +
                 "       sunny: " + isSunny(number) + "\n" +
                 "      square: " + isSquare(number) + "\n" +
-                "     jumping: " + isJumping(number));
+                "     jumping: " + isJumping(number) + "\n" +
+                "       happy: " + isHappy(number) + "\n" +
+                "         sad: " + !isHappy(number));
     }
 
 

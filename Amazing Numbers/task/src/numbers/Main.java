@@ -21,6 +21,7 @@ public class Main {
                     * the second parameter shows how many consecutive numbers are to be printed;
                   - two natural numbers and a property to search for;
                   - two natural numbers and two properties to search for;
+                  - a property preceded by minus must not be present in numbers;
                   - separate the parameters with one space;
                   - enter 0 to exit.""");
 
@@ -58,11 +59,11 @@ public class Main {
                         if (propertyWrong) {
                             if (wrongProperties.size() == 1) {
                                 System.out.println("The property [" + wrongProperties.get(0) + "] is wrong.\n" +
-                                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
+                                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]");
                             } else {
                                 String list = wrongProperties.toString();
                                 System.out.println("The properties " + list + " are wrong.\n" +
-                                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
+                                        "Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING, HAPPY, SAD]");
                             }
                         }
                         if (!propertyWrong) {
