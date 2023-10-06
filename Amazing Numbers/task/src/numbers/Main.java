@@ -1,9 +1,8 @@
 package numbers;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
 import static numbers.CheckingRequest.*;
 
 public class Main {
@@ -49,13 +48,21 @@ public class Main {
                         properties = new Property[inputArray.length - 2];
                         List<String> wrongProperties = new ArrayList<>();
                         for (int i = 2; i < inputArray.length; i++) {
-                            try {
-                                properties[i - 2] = Property.valueOf(inputArray[i].toUpperCase());
-                            } catch (IllegalArgumentException e) {
+                            properties[i - 2] = Property.getPropertyFromString(inputArray[i]);
+
+                            if (properties[i - 2] == null) {
                                 propertyWrong = true;
                                 wrongProperties.add(inputArray[i]);
                             }
+
+
                         }
+                        /**
+                         w sekcji powyżej, w którejś formie pętli for trzeba porówbać input (String) do
+                         zdefiniowanych label enumów za pomocą przeciążonej metody toString.
+
+                         Pomocne linki w Sricky Notes
+                         */
                         if (propertyWrong) {
                             if (wrongProperties.size() == 1) {
                                 System.out.println("The property [" + wrongProperties.get(0) + "] is wrong.\n" +
@@ -67,7 +74,7 @@ public class Main {
                             }
                         }
                         if (!propertyWrong) {
-                            notExclusive = CheckingRequest.isExclusive(properties,notExclusive);
+                            notExclusive = CheckingRequest.isExclusive(properties, notExclusive);
                             if (notExclusive) {
                                 number.setProperties(properties);
                             }
@@ -76,36 +83,42 @@ public class Main {
                 }
             }
 
-            boolean natural = true;
 
-            if (inputArray.length == 1 && number.getChosenNumber() == 0) {
-                exit = true;
-                System.out.println("Goodbye!");
-            }
+                boolean natural = true;
 
-            if (inputArray.length >= 2) {
-                if (number.getRepeats() < 1) {
-                    natural = false;
-                    System.out.println("The second parameter should be a natural number.");
+                if (inputArray.length == 1 && number.getChosenNumber() == 0) {
+                    exit = true;
+                    System.out.println("Goodbye!");
                 }
-            } else {
-                if (number.getChosenNumber() < 1) {
-                    natural = false;
-                    System.out.println("The first parameter should be a natural number or zero.");
-                }
-            }
 
-            if (natural) {
-                if (inputArray.length == 1) {
-                    CheckingNumber.properties(number);
+                if (inputArray.length >= 2) {
+                    if (number.getRepeats() < 1) {
+                        natural = false;
+                        System.out.println("The second parameter should be a natural number.");
+                    }
+                } else {
+                    if (number.getChosenNumber() < 1) {
+                        natural = false;
+                        System.out.println("The first parameter should be a natural number or zero.");
+                    }
                 }
-                if (inputArray.length == 2) {
-                    CheckingMultipleNumbers.properties2(number);
-                }
-                if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
-                    CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
+
+                if (natural) {
+                    if (inputArray.length == 1) {
+                        CheckingNumber.properties(number);
+                    }
+                    if (inputArray.length == 2) {
+                        CheckingMultipleNumbers.properties2(number);
+                    }
+                    if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
+                        CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
+                    }
                 }
             }
-        } while (!exit);
+            while (!exit) ;
+        }
+
     }
-}
+
+
+

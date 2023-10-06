@@ -9,6 +9,8 @@ public class CheckingRequest {
         boolean spy = false;
         boolean sunny = false;
         boolean square = false;
+        boolean happy = false;
+        boolean sad = false;
         for (int i = 0; i < properties.length; i++){
             switch (properties[i]) {
                 case EVEN -> {even = true;}
@@ -17,6 +19,9 @@ public class CheckingRequest {
                 case SPY -> {spy = true;}
                 case SUNNY -> {sunny = true;}
                 case SQUARE -> {square = true;}
+                case HAPPY -> happy = true;
+                case SAD -> sad = true;
+
             }
         }
 
@@ -31,6 +36,10 @@ public class CheckingRequest {
         } else if (sunny && square) {
             notExclusive = false;
             System.out.println("The request contains mutually exclusive properties: [SQUARE, SUNNY]\n" +
+                    "There are no numbers with these properties.");
+        } else if (happy && sad) {
+            notExclusive = false;
+            System.out.println("The request contains mutually exclusive properties: [HAPPY, SAD]\n" +
                     "There are no numbers with these properties.");
         }
         return notExclusive;

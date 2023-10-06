@@ -522,12 +522,12 @@ files:
                 "The second parameter \"{0}\" is wrong. The program should print an error message."
         );
         private static final Checker ERROR_PROPERTY = new RegexChecker(
-                "The property .+ is wrong",
+                "The propert(y|ies) .+ wrong",
                 "The request: \"{0}\" has one wrong property. "
                         + "Expected message: \"The property ... is wrong\"."
         );
         private static final Checker ERROR_PROPERTIES = new RegexChecker(
-                "The properties .+ are wrong",
+                "The propert(y|ies) .+ wrong",
                 "The request: \"{0}\" has two or more incorrect properties. "
                         + "Expected that error message contains: \"The properties ... are wrong\"."
         );
@@ -1646,25 +1646,67 @@ files:
         }
     }
   learner_created: true
+- name: src/numbers/CheckingNumbersWithTwoProperties.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
 status: Failed
 feedback:
-  message: "Wrong answer in test #36\n\nFor the number 2 the expected number of properties\
-    \ is 5 but the actual number of properties is 4. Expected properties are [even,\
-    \ spy, jumping, palindromic, sad]. Actual properties are [even, palindromic, spy,\
-    \ jumping]\n\nPlease find below the output of your program during this failed\
-    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
-    \ input line.\n\n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n \
-    \ - enter a natural number to know its properties; \n  - enter two natural numbers\
-    \ to obtain the properties of the list:\n    * the first parameter represents\
-    \ a starting number;\n    * the second parameter shows how many consecutive numbers\
-    \ are to be printed;\n  - two natural numbers and a property to search for;\n\
-    \  - two natural numbers and two properties to search for;\n  - a property preceded\
-    \ by minus must not be present in numbers;\n  - separate the parameters with one\
-    \ space;\n  - enter 0 to exit.\nEnter a request:\n&gt; 1 10 EVEN\n2 is even, palindromic,\
-    \ spy, jumping\n4 is even, palindromic, spy, square, jumping\n6 is even, palindromic,\
-    \ spy, jumping\n8 is even, palindromic, spy, sunny, jumping\n10 is even, duck,\
-    \ jumping\n12 is even, jumping\n14 is even, buzz\n16 is even, square\n18 is even\n\
-    20 is even, duck\nEnter a request:"
-  time: "Tue, 15 Aug 2023 15:11:35 UTC"
+  message: "Wrong answer in test #36\n\nExpected number is 3 but actual number is\
+    \ 2.\n\nPlease find below the output of your program during this failed test.\n\
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
+    \n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n  - enter a natural\
+    \ number to know its properties; \n  - enter two natural numbers to obtain the\
+    \ properties of the list:\n    * the first parameter represents a starting number;\n\
+    \    * the second parameter shows how many consecutive numbers are to be printed;\n\
+    \  - two natural numbers and a property to search for;\n  - two natural numbers\
+    \ and two properties to search for;\n  - a property preceded by minus must not\
+    \ be present in numbers;\n  - separate the parameters with one space;\n  - enter\
+    \ 0 to exit.\nEnter a request:\n&gt; 1 10 EVEN\n2 is even, palindromic, spy, jumping,\
+    \ sad\n4 is even, palindromic, spy, square, jumping, sad\n6 is even, palindromic,\
+    \ spy, jumping, sad\n8 is even, palindromic, spy, sunny, jumping, sad\n10 is even,\
+    \ duck, jumping, happy\n12 is even, jumping, sad\n14 is even, buzz, sad\n16 is\
+    \ even, square, sad\n18 is even, sad\n20 is even, duck, sad\nEnter a request:\n\
+    &gt; 1 10 ODD\n1 is odd, palindromic, spy, square, jumping, happy\n3 is odd, palindromic,\
+    \ spy, sunny, jumping, sad\n5 is odd, palindromic, spy, jumping, sad\n7 is odd,\
+    \ buzz, palindromic, spy, jumping, happy\n9 is odd, palindromic, spy, square,\
+    \ jumping, sad\n11 is odd, palindromic, sad\n13 is odd, happy\n15 is odd, sunny,\
+    \ sad\n17 is odd, buzz, sad\n19 is odd, happy\nEnter a request:\n&gt; 1 10 BUZZ\n\
+    7 is odd, buzz, palindromic, spy, jumping, happy\n14 is even, buzz, sad\n17 is\
+    \ odd, buzz, sad\n21 is odd, buzz, jumping, sad\n27 is odd, buzz, sad\n28 is even,\
+    \ buzz, happy\n35 is odd, buzz, sunny, sad\n37 is odd, buzz, sad\n42 is even,\
+    \ buzz, sad\n47 is odd, buzz, sad\nEnter a request:\n&gt; 1 10 DUCK\n10 is even,\
+    \ duck, jumping, happy\n20 is even, duck, sad\n30 is even, duck, sad\n40 is even,\
+    \ duck, sad\n50 is even, duck, sad\n60 is even, duck, sad\n70 is even, buzz, duck,\
+    \ happy\n80 is even, duck, sunny, sad\n90 is even, duck, sad\n100 is even, duck,\
+    \ gapful, square, happy\nEnter a request:\n&gt; 1 10 PALINDROMIC\n1 is odd, palindromic,\
+    \ spy, square, jumping, happy\n2 is even, palindromic, spy, jumping, sad\n3 is\
+    \ odd, palindromic, spy, sunny, jumping, sad\n4 is even, palindromic, spy, square,\
+    \ jumping, sad\n5 is odd, palindromic, spy, jumping, sad\n6 is even, palindromic,\
+    \ spy, jumping, sad\n7 is odd, buzz, palindromic, spy, jumping, happy\n8 is even,\
+    \ palindromic, spy, sunny, jumping, sad\n9 is odd, palindromic, spy, square, jumping,\
+    \ sad\n11 is odd, palindromic, sad\nEnter a request:\n&gt; 1 10 GAPFUL\n100 is\
+    \ even, duck, gapful, square, happy\n105 is odd, buzz, duck, gapful, sad\n108\
+    \ is even, duck, gapful, sad\n110 is even, duck, gapful, sad\n120 is even, duck,\
+    \ gapful, sunny, sad\n121 is odd, palindromic, gapful, square, jumping, sad\n\
+    130 is even, duck, gapful, happy\n132 is even, gapful, spy, sad\n135 is odd, gapful,\
+    \ sad\n140 is even, buzz, duck, gapful, sad\nEnter a request:\n&gt; 1 10 SPY\n\
+    1 is odd, palindromic, spy, square, jumping, happy\n2 is even, palindromic, spy,\
+    \ jumping, sad\n3 is odd, palindromic, spy, sunny, jumping, sad\n4 is even, palindromic,\
+    \ spy, square, jumping, sad\n5 is odd, palindromic, spy, jumping, sad\n6 is even,\
+    \ palindromic, spy, jumping, sad\n7 is odd, buzz, palindromic, spy, jumping, happy\n\
+    8 is even, palindromic, spy, sunny, jumping, sad\n9 is odd, palindromic, spy,\
+    \ square, jumping, sad\n22 is even, palindromic, spy, sad\nEnter a request:\n\
+    &gt; 1 10 SQUARE\n1 is odd, palindromic, spy, square, jumping, happy\n4 is even,\
+    \ palindromic, spy, square, jumping, sad\n9 is odd, palindromic, spy, square,\
+    \ jumping, sad\n16 is even, square, sad\n25 is odd, square, sad\n36 is even, square,\
+    \ sad\n49 is odd, buzz, square, happy\n64 is even, square, sad\n81 is odd, square,\
+    \ sad\n100 is even, duck, gapful, square, happy\nEnter a request:\n&gt; 1 10 SUNNY\n\
+    2 is even, palindromic, spy, jumping, sad\n3 is odd, palindromic, spy, sunny,\
+    \ jumping, sad\n4 is even, palindromic, spy, square, jumping, sad\n5 is odd, palindromic,\
+    \ spy, jumping, sad\n6 is even, palindromic, spy, jumping, sad\n8 is even, palindromic,\
+    \ spy, sunny, jumping, sad\n9 is odd, palindromic, spy, square, jumping, sad\n\
+    11 is odd, palindromic, sad\n12 is even, jumping, sad\n14 is even, buzz, sad\n\
+    Enter a request:"
+  time: "Fri, 06 Oct 2023 16:25:08 UTC"
 record: 8

@@ -196,11 +196,6 @@ public class CheckingMultipleNumbers {
         return stringHappyOrSad;
     }
 
-    static String isSad(long number) {
-        String stringSad = "";
-
-        return stringSad;
-    }
 
     static void properties2(Number number) {
         long startNumber = number.getChosenNumber();
@@ -245,9 +240,6 @@ public class CheckingMultipleNumbers {
             }
             if (isHappy(startNumber).length() > 2) {
                 result.add(isHappy(startNumber));
-            }
-            if (isSad(startNumber).length() > 2) {
-                result.add(isSad(startNumber));
             }
 
             System.out.println(startNumber + " is " + result);

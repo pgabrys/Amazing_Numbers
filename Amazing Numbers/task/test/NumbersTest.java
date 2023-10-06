@@ -58,12 +58,12 @@ public final class NumbersTest extends StageTest {
             "The second parameter \"{0}\" is wrong. The program should print an error message."
     );
     private static final Checker ERROR_PROPERTY = new RegexChecker(
-            "The property .+ is wrong",
+            "The propert(y|ies) .+ wrong",
             "The request: \"{0}\" has one wrong property. "
                     + "Expected message: \"The property ... is wrong\"."
     );
     private static final Checker ERROR_PROPERTIES = new RegexChecker(
-            "The properties .+ are wrong",
+            "The propert(y|ies) .+ wrong",
             "The request: \"{0}\" has two or more incorrect properties. "
                     + "Expected that error message contains: \"The properties ... are wrong\"."
     );
