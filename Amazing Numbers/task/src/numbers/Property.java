@@ -15,7 +15,7 @@ public enum Property {
     SUNNY("SUNNY"), NEGATIVE_SUNNY("-SUNNY"),
     JUMPING("JUMPING"), NEGATIVE_JUMPING("-JUMPING"),
     HAPPY("HAPPY"), NEGATIVE_HAPPY("-HAPPY"),
-    SAD("SUNNY"), NEGATIVE_SAD("-SAD");
+    SAD("SAD"), NEGATIVE_SAD("-SAD");
 
     public final String label;
 
@@ -24,7 +24,6 @@ public enum Property {
     @Override
     public String toString() { return label; }
 
-    // fullName to labe
 
     public String getLabel() {
         return label;
