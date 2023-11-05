@@ -57,12 +57,7 @@ public class Main {
 
 
                         }
-                        /**
-                         w sekcji powyżej, w którejś formie pętli for trzeba porówbać input (String) do
-                         zdefiniowanych label enumów za pomocą przeciążonej metody toString.
 
-                         Pomocne linki w Sricky Notes
-                         */
                         if (propertyWrong) {
                             if (wrongProperties.size() == 1) {
                                 System.out.println("The property [" + wrongProperties.get(0) + "] is wrong.\n" +
@@ -110,8 +105,11 @@ public class Main {
                     if (inputArray.length == 2) {
                         CheckingMultipleNumbers.properties2(number);
                     }
+//                    if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
+//                        CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
+//                    }
                     if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
-                        CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
+                        CheckingNumberWithProperty.properties3prim(CheckingMultipleProperties.multipleProperties2(number, properties));
                     }
                 }
             }
