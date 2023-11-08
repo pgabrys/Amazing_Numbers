@@ -1,8 +1,5 @@
 package numbers;
 
-import java.util.Arrays;
-import java.util.Optional;
-
 public enum Property {
     EVEN("EVEN"), NEGATIVE_EVEN("-EVEN"),
     ODD("ODD"), NEGATIVE_ODD("-ODD"),
@@ -38,10 +35,4 @@ public enum Property {
         }
         return property;
     }
-
-
-//    Property checkingValidProperty(String currentProperty) {
-//
-//        return
-//    }
 }

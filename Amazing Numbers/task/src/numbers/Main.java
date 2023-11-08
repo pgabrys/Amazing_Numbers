@@ -1,9 +1,5 @@
 package numbers;
-
-
 import java.util.*;
-
-import static numbers.CheckingRequest.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -105,9 +101,7 @@ public class Main {
                     if (inputArray.length == 2) {
                         CheckingMultipleNumbers.properties2(number);
                     }
-//                    if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
-//                        CheckingNumberWithProperty.properties3(CheckingMultipleProperties.multipleProperties(number, properties));
-//                    }
+
                     if (inputArray.length >= 3 && notExclusive && !propertyWrong) {
                         CheckingNumberWithProperty.properties3prim(CheckingMultipleProperties.multipleProperties2(number, properties));
                     }

@@ -1646,23 +1646,9 @@ files:
         }
     }
   learner_created: true
-- name: src/numbers/CheckingNumbersWithTwoProperties.java
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Error in test #84\n\nIn this test, the program is running for a long time,\
-    \ more than 15 seconds. Most likely, the program has gone into an infinite loop.\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nWelcome to Amazing Numbers!\n\nSupported requests:\n  - enter a natural\
-    \ number to know its properties; \n  - enter two natural numbers to obtain the\
-    \ properties of the list:\n    * the first parameter represents a starting number;\n\
-    \    * the second parameter shows how many consecutive numbers are to be printed;\n\
-    \  - two natural numbers and a property to search for;\n  - two natural numbers\
-    \ and two properties to search for;\n  - a property preceded by minus must not\
-    \ be present in numbers;\n  - separate the parameters with one space;\n  - enter\
-    \ 0 to exit.\nEnter a request:\n&gt; 6 6 -odd -even"
-  time: "Sun, 05 Nov 2023 18:06:45 UTC"
+  message: Congratulations!
+  time: "Wed, 08 Nov 2023 18:55:22 UTC"
 record: 8
